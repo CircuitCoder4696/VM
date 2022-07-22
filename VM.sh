@@ -1,0 +1,1 @@
+dub build --config=\"vm\" --force && ./vm -s ./myApp.hlAsm

@@ -11,11 +11,11 @@ public string[] stack_trace() {
         writeln("[Warn] ",__MODULE__," @",__LINE__,":   Reflection is not ready for `ldc`.  ");
     };
     import core.stdc.stdlib;
-    void* st= malloc(7500);
+    void* st= malloc(0);
     auto trace= defaultTraceHandler(st);
     string[] result= new string[0];
     foreach (line; trace)
-        result ~= [cast(string)line];
+        result ~= [line.idup];
     free(st);
     return result;
 };
