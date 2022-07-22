@@ -11,15 +11,15 @@ public class VM {
 	public static bool allowNativeExt= true;
 	public static Proc proc= Proc();
 	public static ulong limit= 400;
-	public static void delegate()[256] xe,xe_ff;
-	private void xe_00() {};
-	private void xe_ff_00() {
-    this.proc.mem += Proc();
+	public static void function()[256] vm,vm_ff;
+	private static void f_00() {};
+	private void f_ff_00() {
+    // this.proc.mem += Proc();
   };
 	static this() {
-		this.xe[0x00]= &this.xe_00;
-		this.xe[0xff]= &this.xe_ff;
-		this.xe_ff[x00]= &this.xe_ff_00;
+		this.f[0x00]= &vm_00;
+		this.f[0xff]= &vm_ff;
+		this.f_ff[x00]= &vm_ff_00;
 	};
 	public this(ubyte[] mem) {
     this.proc.mem= mem;
