@@ -1,6 +1,7 @@
 module Main;
+import templates.AppInit;
 
-public class Main {
+public class Main:AppInit {
     import std.stdio:writeln;
     public static string[] ArgV;
     public static void initProc(uint ArgI) {
