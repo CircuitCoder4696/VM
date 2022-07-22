@@ -1,20 +1,23 @@
-module Main;
+module app.Main;
 import templates.AppInit;
 
 public class Main:AppInit {
-    import main;
+    import _vm_main;
     import std.stdio:writeln;
-    public static string[] ArgV;
-    public static void initProc(uint ArgI) {
+    public string[] ArgV;
+    public this() {};
+    public void main(uint ArgI) {
         switch(ArgV[ArgI]) {
             case "-s":
-                writeln("[UNIMPL] ",__MODULE__," @",__LINE__,":   The scan option is not yet implemented.  ");
+                option= "scan";
                 break;
             default:
                 if(option=="") {
                     writeln("No option selected!  ");
-                    exit(-1);
+                    exit(16);
                 };
+                params[option] ~= [ArgV[ArgI]];
+                writeln(params);
         };
     };
 };
