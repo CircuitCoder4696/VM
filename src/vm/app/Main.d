@@ -22,5 +22,11 @@ public class Main:AppInit {
     public static void main(string[][string] params) {
         writeln(params["scan"]);
         writeln(params["run"]);
+        VM vm= new VM();
+        foreach(p; params["run"])if(exists(p)) {
+            vm.newThread(read(p));
+        } else {
+            writeln("Could not find executable \"",p,"\"");
+        };
     };
 };
