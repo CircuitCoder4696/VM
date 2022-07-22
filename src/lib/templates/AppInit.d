@@ -5,6 +5,7 @@ import d.reflection;
 public abstract class AppInit:DevToolChain {
     private import core.stdc.stdlib;
     private import std.stdio;
+    public static bool next= true;
     protected static string[][string] params;
     public static void exit(int statusCode) {
         _Exit(statusCode);

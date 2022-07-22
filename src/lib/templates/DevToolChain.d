@@ -11,5 +11,5 @@ public class DevToolChain_DbgMessage {
 };
 
 public abstract class DevToolChain {
-    public DevToolChain_DbgMessage msg= new DevToolChain_DbgMessage();
+    public DevToolChain_DbgMessage log= new DevToolChain_DbgMessage();
 };

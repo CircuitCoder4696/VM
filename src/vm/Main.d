@@ -10,13 +10,14 @@ public class Main:AppInit {
         switch(arg) {
             case "-s":
                 option= "scan";
+                next= true;
                 break;
             default:
                 if(option=="") {
-                    writeln("No option selected!  ");
+                    log.err("No option selected!  ");
                     exit(16);
                 };
-                writeln("Should ave an associated array of parameters.  ");
+                log.dbg("Should have an associated array of parameters.  ");
                 writeln(params);
         };
     };

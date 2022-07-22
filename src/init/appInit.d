@@ -6,5 +6,8 @@ void main(string[] ArgV) {
     import app.Main;
     auto main= new Main();
     main.ArgV= ArgV;
-    main.main();
+    while(main.next) {
+        main.main();
+        main.next= false;
+    };
 };
