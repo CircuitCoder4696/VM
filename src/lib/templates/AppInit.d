@@ -1,6 +1,8 @@
 module templates.AppInit;
+import templates.DevToolChain;
+import d.reflection;
 
-public abstract class AppInit {
+public abstract class AppInit:DevToolChain {
     private import core.stdc.stdlib;
     private import std.stdio;
     protected static string[][string] params;

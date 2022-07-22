@@ -1,7 +1,7 @@
 { pkgs }: {
     deps = with pkgs;
     [
-        ldc
+        dmd
         dub
     ];
 }
