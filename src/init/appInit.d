@@ -11,6 +11,4 @@ void main(string[] ArgV) {
         main.next= false;
     };
     main.main(main.params);
-    import std;
-    writeln(main.params);
 };

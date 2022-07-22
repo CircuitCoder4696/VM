@@ -5,9 +5,11 @@ public class Main:AppInit {
     import _vm_main;
     import std.stdio:writeln;
     public void init(string arg) { switch(arg) {
+    case "-run":
+        option= "run";
+        break;
     case "-s":
         option= "scan";
-        next= true;
         break;
     default:
         if(option=="") {
@@ -16,4 +18,8 @@ public class Main:AppInit {
         };
         params[option] ~= [arg];
     }; };
+    public static void main(string[][string] params) {
+        writeln(params["scan"]);
+        writeln(params["run"]);
+    };
 };
