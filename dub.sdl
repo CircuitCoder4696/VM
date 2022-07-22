@@ -1,0 +1,7 @@
+name "vm"
+description "A minimal D application."
+authors "runner"
+copyright "Copyright © 2022, runner"
+license "LGPL"
+sourcePaths "test"
+sourcePaths "src"
