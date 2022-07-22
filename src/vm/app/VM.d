@@ -13,6 +13,9 @@ public class VM {
 	public static ulong limit= 400;
 	public static void function()[256] vm,vm_ff;
 	private static void f_00() {};
+    private static void f_ff() {
+        
+    };
 	private void f_ff_00() {
     // this.proc.mem += Proc();
   };
