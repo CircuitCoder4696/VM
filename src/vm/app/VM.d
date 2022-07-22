@@ -1,5 +1,10 @@
 module app.VM;
 
+public struct Proc {
+  ulong r0,r1,r2,r3,cp,dp,fr,kr;
+  public ubyte[] mem;
+};
+
 public class VM {
 	public static bool run= true;
 	public static bool allowFullIO= false;
@@ -9,7 +14,7 @@ public class VM {
 	public static void delegate()[256] xe,xe_ff;
 	private void xe_00() {};
 	private void xe_ff_00() {
-    this.proc.mem += 
+    this.proc.mem += Proc();
   };
 	static this() {
 		this.xe[0x00]= &this.xe_00;
