@@ -1,29 +1,22 @@
 module app.VM;
 
 public class VM {
-    private alias func= void function(void*);
-    private static uint i= 0;
-    private static void delegate(void* ctx)[] instructionSet;
-    public static uint setInst(
-        funcrion
-        void
-        (
-            void*
-            ctx
-        )
-        inst,
-    ) {
-        uint result= this.i++;
-        this.instructionSet ~= inst;
-        return result;
-    };
-    public static __callOne(size_t ip, uint[] code) {
-        this.inst[code[ip]]();
-    };
-    public static void x_00000000(void*) {
-        writeln("Hello world.  ");
-    };
-    static this() {
-        VM.set(&x_00000000);
-    };
+	public static bool run= true;
+	public static bool allowFullIO= false;
+	public static bool allowNativeExt= true;
+	public static Proc proc= Proc();
+	public static ulong limit= 400;
+	public static void delegate()[256] xe,xe_ff;
+	private void xe_00() {};
+	private void xe_ff_00() {
+    this.proc.mem += 
+  };
+	static this() {
+		this.xe[0x00]= &this.xe_00;
+		this.xe[0xff]= &this.xe_ff;
+		this.xe_ff[x00]= &this.xe_ff_00;
+	};
+	public this(ubyte[] mem) {
+    this.proc.mem= mem;
+  };
 };
