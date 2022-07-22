@@ -22,7 +22,7 @@ public class VM {
 	static this() {
 		this.vm[0x00]= &f_00;
 		this.vm[0xff]= &f_ff;
-		this.vm_ff[x00]= &f_ff_00;
+		this.vm_ff[0x00]= &f_ff_00;
 	};
 	public this(ubyte[] mem) {
     this.proc.mem= mem;
