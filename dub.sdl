@@ -7,6 +7,8 @@ sourcePaths "src/init"
 # sourcePaths "test"
 # sourcePaths "src/dev-kit"
 sourcePaths "src/lib"
-sourcePaths "src/vm"
+configuration "vm" {
+    sourcePaths "src/vm"
+}
 targetPath "./"
 targetType "executable"
