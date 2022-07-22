@@ -1,4 +1,4 @@
-run = "dub build"
+run = "dub build && ./vm"
 
 [nix]
 channel = "stable-21_11"
