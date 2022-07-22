@@ -7,5 +7,7 @@ public abstract class AppInit {
     public static void exit(int statusCode) {
         _Exit(statusCode);
     };
-    public static string option= "";
+    public string option= "";
+    public int ArgI;
+    public string[] ArgV;
 };

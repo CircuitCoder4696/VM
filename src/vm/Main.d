@@ -4,8 +4,6 @@ import templates.AppInit;
 public class Main:AppInit {
     import _vm_main;
     import std.stdio:writeln;
-    public string[] ArgV;
-    public this() {};
     public void main(uint ArgI) {
         switch(ArgV[ArgI]) {
             case "-s":
