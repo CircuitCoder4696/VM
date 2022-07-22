@@ -2,6 +2,7 @@ module Main;
 import templates.AppInit;
 
 public class Main:AppInit {
+    import main;
     import std.stdio:writeln;
     public static string[] ArgV;
     public static void initProc(uint ArgI) {
@@ -10,7 +11,7 @@ public class Main:AppInit {
                 writeln("[UNIMPL] ",__MODULE__," @",__LINE__,":   The scan option is not yet implemented.  ");
                 break;
             default:
-                if((cast(size_t)option)==0) {
+                if(option=="") {
                     writeln("No option selected!  ");
                     exit(-1);
                 };
