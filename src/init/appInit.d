@@ -6,5 +6,5 @@ void main(string[] ArgV) {
     import std.variant:var=Variant;
     auto main= new Main();
     main.ArgV= ArgV;
-    main.main(1);
+    main.main();
 };

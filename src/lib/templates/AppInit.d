@@ -8,7 +8,7 @@ public abstract class AppInit {
         _Exit(statusCode);
     };
     public string option= "";
-    public int ArgI;
+    public int ArgI= 1;   //   It doesn't need to provide the host application's name as a command-line argument.  
     public string[] ArgV;
     public string getNextArg() {
         if(this.ArgI >= this.ArgV.length)return null;

@@ -4,8 +4,9 @@ import templates.AppInit;
 public class Main:AppInit {
     import _vm_main;
     import std.stdio:writeln;
-    public void main(uint ArgI) {
-        switch(ArgV[ArgI]) {
+    public void main() {
+        string arg= getNextArg();
+        switch(arg) {
             case "-s":
                 option= "scan";
                 break;
@@ -14,7 +15,7 @@ public class Main:AppInit {
                     writeln("No option selected!  ");
                     exit(16);
                 };
-                params[option] ~= [ArgV[ArgI]];
+                writeln("Should ave an associated array of parameters.  ");
                 writeln(params);
         };
     };
