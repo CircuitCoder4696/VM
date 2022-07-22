@@ -6,6 +6,7 @@ public class Main:AppInit {
     import std.stdio:writeln;
     public void main() {
         string arg= getNextArg();
+        writeln(arg);
         switch(arg) {
             case "-s":
                 option= "scan";
