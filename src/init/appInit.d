@@ -7,9 +7,10 @@ void main(string[] ArgV) {
     auto main= new Main();
     main.ArgV= ArgV;
     while(main.ArgI < main.ArgV.length) {
-        main.main(main.getNextArg());
+        main.init(main.getNextArg());
         main.next= false;
     };
+    main.main(main.params);
     import std;
     writeln(main.params);
 };
