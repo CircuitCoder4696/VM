@@ -17,9 +17,9 @@ public class VM {
     // this.proc.mem += Proc();
   };
 	static this() {
-		this.f[0x00]= &vm_00;
-		this.f[0xff]= &vm_ff;
-		this.f_ff[x00]= &vm_ff_00;
+		this.vm[0x00]= &f_00;
+		this.vm[0xff]= &f_ff;
+		this.vm_ff[x00]= &f_ff_00;
 	};
 	public this(ubyte[] mem) {
     this.proc.mem= mem;
