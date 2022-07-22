@@ -1,7 +1,13 @@
 module app.VM;
 
 public struct Proc {
-  ulong r0,r1,r2,r3,cp,dp,fr,kr;
+  ulong r0,r1,r2,r3;
+    ulong cp;   //   Call pointer.  
+    ulong dp;   //   Data pointer.  
+    ulong fr;   //   Flag register.  
+    ulong kr;   //   Kern-register.  
+    ulong ip;   //   Instruction pointer.  
+    ulong rp;   //   Result pointer.  
   public ubyte[] mem;
 };
 
