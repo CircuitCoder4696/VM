@@ -1,4 +1,5 @@
 module app.VM;
+private enum totalThreadsPerProcess= 64;
 
 public struct Proc {
     ulong r0,r1,r2,r3;
@@ -12,6 +13,8 @@ public struct Proc {
 };
 
 public class VM {
+    public static VM[totalThreadsPerProcess] threads;
+    private static size_t threadI;
 	public static bool run= true;
 	public static bool allowFullIO= false;
 	public static bool allowNativeExt= true;
@@ -26,12 +29,25 @@ public class VM {
 		this.vm[0xff]= &f_ff;
 		this.vm_ff[0x00]= &f_ff_00;
 	};
-	public this(ubyte[] mem) {
-        this.proc= Proc(0,0,0,0, 0,0, 0, 0, 0, 0, cast(void[]) men);
-    };
-    public void initThread(string objPath) {
-        while(this.running) {
-            this.vm[this.proc.ip++](this.proc);
+	public void newThread(ubyte[] mem) {
+        size_t j= this.threadI;
+        foreach(i; 0 .. (totalThreadsPerProcess +1)) {
+            if((cast(size_t)this.threads[(i + j)%totalThreadsPerProcess])==0)break;
+            if(i==totalThreadsPerProcess) {
+                writeln("All thread-slots are taken.  ");
+                return;
+            };
         };
+        VM result= new VM();
+        this.threads[this.threadI%totalThreadsPerProcess]= result;
+        result.proc= Proc(0,0,0,0, 0,0, 0, 0, 0, 0, cast(void[]) men);
+    };
+    public void runInst() {
+        if(this.running) {
+            if((cast(size_t)this.vm[cast(ubyte)this.proc.mem[this.proc.ip++]])==0)
+            this.vm[cast(ubyte)this.proc.mem[this.proc.ip++]](this.proc);
+            return;
+        };
+        return;
     };
 };

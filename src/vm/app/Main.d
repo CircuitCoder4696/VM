@@ -1,4 +1,5 @@
 module application.Main;
+import app.VM;
 import templates.AppInit;
 
 public class Main:AppInit {
