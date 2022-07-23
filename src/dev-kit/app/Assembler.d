@@ -3,7 +3,7 @@ module app.Assembler;
 public class Assembler {
     public string fp;
     public string[] srcCode;
-    public void[] data;
+    public BinFile binFile;
     public this(string filePath) {
         import std.array;
         import std.file:exists,read;
@@ -24,14 +24,14 @@ public class Assembler {
             inst[instI]
             ==
             0x20
-            &&
-            instI<inst.length
-        )instI++;
+        )if(instI<inst.length)instI++;
         string[] instSegs= inst[instI..$].split(" ");
         switch(instSegs[0]) {
             case "object":
                 writeln("object path: ",(inst[(instI +7)..$]),";");
                 break;
+            case "start":
+                binFile.start= instSegs[1];
             default:return false;
         };
         return true;
