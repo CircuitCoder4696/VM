@@ -71,4 +71,7 @@ public class Assembler {
         public void[] data() @property @trusted {
             return this.binFile.ff.data.dup;   //   Data is duped to avoid the data being overridden, by code outside of the assembler itself.  
         };
+        public string[] symbols() @property {
+            return this.binFile.ff.symbols.dup;
+        };
 };
