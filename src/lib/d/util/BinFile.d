@@ -30,6 +30,11 @@ public class FileFormat {
     public ulong getEntry_Pointer() {
         return (cast(format_mainHeader*) this.data)[0].entry_Ptr;
     };
+    public size_t newSymbol(string symbol) {
+        size_t result= this.symbols.length;
+        this.symbols ~= [symbol];
+        return result;
+    };
 };
 
 public class bf_ByteCode:FileFormat {

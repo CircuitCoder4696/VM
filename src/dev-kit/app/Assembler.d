@@ -42,12 +42,12 @@ public class Assembler {
                 break;
             case "procedure":
                 writeln("enter procedure for `",instSegs[1],"`;");
-                this.binFile.ff.symbols ~= [instSegs[1]];
+                this.binFile.ff.newSymbol(instSegs[1]);
                 break;
             case "start":
                 binFile.start= instSegs[1];
                 writeln("start symbol: ",binFile.start,";");
-                this.binFile.ff.symbols ~= [instSegs[1]];
+                this.binFile.ff.newSymbol(instSegs[1]);
                 break;
             default:
                 writeln("unknown_inst=`",inst,"`;");
