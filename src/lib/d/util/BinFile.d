@@ -1,5 +1,35 @@
 module d.util.BinFile;
 
+public class FileFormat {
+    import d.util.bits;
+    import std.conv:to;
+    private enum:uint {
+        Executable,
+        Loadable,
+        Readable,
+        Storable,
+        Writable,
+        Mode_IterLen,
+    };
+    private struct format_sectionHeader {
+        BitField!Mode_IterLen mode;
+    };
+    import std.format;
+    pragma(msg, "format_sectionHeader.sizeof= %s;".format(format_sectionHeader.sizeof));
+    private struct format_mainHeader {
+        uint magic;
+        uint dts;
+        ulong entry_Ptr;
+        uint sectionTable_IterLen;
+    };
+    public size_t[] getMagic() {
+        return [1,0];
+    };
+    public size_t getEntryPoint() {};
+};
+
+public class bf_ByteCode:FileFormat {};
+
 public abstract class BinFile(FileFormat) {
     FileFormat ff;
     private string fs;

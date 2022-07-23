@@ -1,9 +1,10 @@
 module app.Assembler;
 
 public class Assembler {
+    import d.util.BinFile;
     public string fp;
     public string[] srcCode;
-    public BinFile binFile;
+    public BinFile!(bf_ByteCode) binFile;
     public this(string filePath) {
         import std.array;
         import std.file:exists,read;
