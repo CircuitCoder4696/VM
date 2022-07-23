@@ -2,6 +2,7 @@ module d.io.command;
 
 public class ArgHandler {
     private string[] ArgV;
+    private string[string] pde;
     public this(string... pd)(string[] ArgV, pd parameterDefinitions) {
         this.ArgV= ArgV;
         foreach(pde; parameterDefinitions) {
