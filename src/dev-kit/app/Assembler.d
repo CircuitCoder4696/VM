@@ -30,7 +30,7 @@ public class Assembler {
         string[] instSegs= inst[instI..$].split(" ");
         if(this.binFile is null)
             this.binFile= new BinFile!(bf_ByteCode)(this.fp);
-        switch(instSegs[0]) {
+        switch(instSegs[0]) {   //SearchIndex:   inst.elements;
             case "object":
                 writeln("object path: ",(inst[(instI +7)..$]),";");
                 break;
