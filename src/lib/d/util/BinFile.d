@@ -53,7 +53,9 @@ public class bf_ByteCode:FileFormat {
             )
         )[0];
     };
-    public void __wMainHeader(format_mainHeader mainHeader, FileFormat fileFormat) {};
+    public void __wMainHeader(format_mainHeader mainHeader, FileFormat fileFormat) {
+        writeln("::= ",fileFormat.symbols,";");
+    };
     public void __wSectionHeaders(format_sectionHeader[] sectionHeaders, FileFormat fileFormat) {};
     public void[] genData() {
         void[] result= new void[60000];
