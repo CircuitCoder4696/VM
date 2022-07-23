@@ -2,7 +2,12 @@ module d.io.command;
 
 public class ArgHandler {
     private string[] ArgV;
-    public this()
+    public this(string... pd)(string[] ArgV, pd parameterDefinitions) {
+        this.ArgV= ArgV;
+        foreach(pde; parameterDefinitions) {
+            pdeSegments= pde.split(":");
+        };
+    };
     public static string[] opDispatch(string param)() {
         bool appendArguments= false;
         string[] result;
