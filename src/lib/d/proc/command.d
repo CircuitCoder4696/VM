@@ -1,4 +1,4 @@
-module d.io.command;
+module d.proc.command;
 
 public class ArgHandler {
     private string[] ArgV;
@@ -19,7 +19,7 @@ public class ArgHandler {
         foreach(a; this.ArgV)if(a[0]=='-') {
             appendArguments= false;
             
-            if(this.pdDict.keys().indexOf(param)==-1)return;
+            if(this.pdDict.keys.indexOf(param)==-1)return;
             if(
                 a[1..$]
                 ==

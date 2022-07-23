@@ -1,5 +1,5 @@
 module app.Main;
-import d.io.command:ArgHandler;
+import d.proc.command:ArgHandler;
 
 public void main(string[] ArgV) {
     ArgHandler ah= new ArgHandler(ArgV, "c:compile", "o:output");
@@ -7,6 +7,6 @@ public void main(string[] ArgV) {
     int[int] abc;
     abc[3]= 5;
     writeln(abc.keys);
-    // foreach(sourceFile; ah.compile)writeln(sourceFile);
+    foreach(sourceFile; ah.compile)writeln(sourceFile);
     writeln("Hello vmdk.  ");
 };
