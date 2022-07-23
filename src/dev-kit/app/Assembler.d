@@ -9,8 +9,9 @@ public class Assembler {
         import std.array;
         import std.file:exists,read;
         import std.stdio:writeln;
+        this.binFile= new BinFile!bf_ByteCode(filePath);
         if(this.binFile is null)writeln("[Err] ",__MODULE__," @",__LINE__,":   `this.binFile` is still null!  ");
-        if(this.binFile.ff is null)this.binFile.ff= new bf_ByteCode(new void[60000]);   //   Make sure `this.binFile.ff` is not null.  
+        // if(this.binFile.ff is null)this.binFile.ff= new bf_ByteCode(new void[60000]);   //   Make sure `this.binFile.ff` is not null.  
         if(this.binFile.ff is null)writeln("[Err] ",__MODULE__," @",__LINE__,":   `this.binFile.ff` is still null!  ");
         this.fp= filePath;
         if(!exists(this.fp)) {
