@@ -62,7 +62,9 @@ public class Assembler {
         import std;
         ubyte[] result= [];
         foreach(inst; this.srcCode) {
+            writeln("/----- (1)");
             if((cast(size_t) inst[].ptr)==0)return this;   //   Avoid segmentaton.  
+            writeln("\\----- (1)");
             if(assembleInst(inst))continue;
         };
         this.binFile= new BinFile!bf_ByteCode(this.fp);
@@ -71,7 +73,8 @@ public class Assembler {
     //getters:
         import std.stdio:writeln;
         public void[] data() @property @trusted {
-            return this.binFile.data;   //   Data is is generated and can't be directly overridden.  
+            void[] result= this.binFile.data;   //   Data is is generated and can't be directly overridden.  
+            return results;   //   Data is is generated and can't be directly overridden.  
         };
         public string[] symbols() @property {
             if(this.binFile is null)writeln("[Err] ",__MODULE__," @",__LINE__,":   `this.binFile` shouldn't be null.  ");
