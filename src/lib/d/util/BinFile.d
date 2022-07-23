@@ -25,38 +25,54 @@ public class FileFormat {
     public size_t[] getMagic() {
         return [1,0];
     };
-    public size_t getEntryPoint() {};
+    public ulong getEntry_Pointer() {
+        return (cast(format_mainHeader*) this.data)[0];
+    };
 };
 
-public class bf_ByteCode:FileFormat {};
-
-public abstract class BinFile(FileFormat) {
-    FileFormat ff;
-    private string fs;
+public class bf_ByteCode:FileFormat {
     private void[] data;
+    public this(void[] data) {
+        this.data= data;
+    };
+    public T getValue(T)(size_t ptr) {
+        return (
+            cast(T*) (
+                (cast(size_t)this.data)
+                +
+                ptr
+            )
+        )[0];
+    };
+};
+
+public abstract class binary_file {
+    public FileFormat ff;
+    private string fs;
+    // private void[] data;
     private ubyte get08(size_t ptr, uint index= 0) {
-        return (cast(ubyte*) ((cast(size_t)this.data) + ptr))[index];
+        return (cast(ubyte*) ((cast(size_t)this.ff.data) + ptr))[index];
     };
     private ushort get16(size_t ptr, uint index= 0) {
-        return (cast(ushort*) ((cast(size_t)this.data) + ptr))[index];
+        return (cast(ushort*) ((cast(size_t)this.ff.data) + ptr))[index];
     };
     private uint get32(size_t ptr, uint index= 0) {
-        return (cast(uint*) ((cast(size_t)this.data) + ptr))[index];
+        return (cast(uint*) ((cast(size_t)this.ff.data) + ptr))[index];
     };
     private ulong get64(size_t ptr, uint index= 0) {
-        return (cast(ulong*) ((cast(size_t)this.data) + ptr))[index];
+        return (cast(ulong*) ((cast(size_t)this.ff.data) + ptr))[index];
     };
     private void set08(size_t ptr, uint index= 0, ubyte val= 0) {
-        (cast(ubyte*) ((cast(size_t)this.data) + ptr))[index]= val;
+        (cast(ubyte*) ((cast(size_t)this.ff.data) + ptr))[index]= val;
     };
     private void set16(size_t ptr, uint index= 0, ushort val= 0) {
-        (cast(ushort*) ((cast(size_t)this.data) + ptr))[index]= val;
+        (cast(ushort*) ((cast(size_t)this.ff.data) + ptr))[index]= val;
     };
     private void set32(size_t ptr, uint index= 0, uint val= 0) {
-        (cast(uint*) ((cast(size_t)this.data) + ptr))[index]= val;
+        (cast(uint*) ((cast(size_t)this.ff.data) + ptr))[index]= val;
     };
     private void set64(size_t ptr, uint index= 0, ulong val= 0) {
-        (cast(ulong*) ((cast(size_t)this.data) + ptr))[index]= val;
+        (cast(ulong*) ((cast(size_t)this.ff.data) + ptr))[index]= val;
     };
     public size_t wPtr= 0;
     public size_t rPte= 0;
@@ -84,7 +100,13 @@ public abstract class BinFile(FileFormat) {
         this.rPtr += typeof(v).sizeof;
         return v;
     };
+};
+
+public class BinFile(FileFormat):binary_file {
+    public string start;
     public this(string filePath) {
         this.fs= filePath;
+        void[] data= read(filePath);
+        this.ff= new FileFormat(data);
     };
 };
