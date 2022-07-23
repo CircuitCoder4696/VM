@@ -30,7 +30,7 @@ public class Assembler {
         string[] instSegs= inst[instI..$].split(" ");
         switch(instSegs[0]) {
             case "object":
-                writeln("object path: ",(inst[(instI +4)..$]),";");
+                writeln("object path: ",(inst[(instI +7)..$]),";");
                 break;
             default:return false;
         };
