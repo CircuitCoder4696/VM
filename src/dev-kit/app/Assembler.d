@@ -49,6 +49,6 @@ public class Assembler {
     };
     //getters:
         public void[] data() @property @safe {
-            return this.ff.dara.dup;   //   Data is duped to avoid the data being overridden, by code outside of the assembler itself.  
+            return this.binFile.ff.data.dup;   //   Data is duped to avoid the data being overridden, by code outside of the assembler itself.  
         };
 };
