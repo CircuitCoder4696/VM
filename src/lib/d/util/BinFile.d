@@ -100,8 +100,6 @@ public abstract class binary_file {
     private void set64(size_t ptr, uint index= 0, ulong val= 0) {
         (cast(ulong*) ((cast(size_t)this.ff.data.ptr) + ptr))[index]= val;
     };
-    public size_t wPtr= 0;
-    public size_t rPte= 0;
     public ubyte get08(int index) {
         if(index==-1)return this.get08(this.rPtr, 0);
         ubyte v= this.get08(this.rPtr, index);
