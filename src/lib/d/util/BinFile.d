@@ -88,6 +88,7 @@ public abstract class binary_file {
 };
 
 public class BinFile(FileFormat):binary_file {
+    import std.stdio:writeln;
     public string start;
     public this(string filePath) {
         this.fs= filePath;
