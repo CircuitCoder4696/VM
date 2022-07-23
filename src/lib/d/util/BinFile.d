@@ -78,7 +78,7 @@ public class bf_ByteCode:FileFormat {
         ))[0..(
             mainHeader.sectionTable_IterLen
         )];
-        this.__wSectionHeaders(sectionHeaders, this.ff);
+        this.__wSectionHeaders(sectionHeaders, this);
         return result;
     };
 };
