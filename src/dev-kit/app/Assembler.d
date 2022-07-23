@@ -4,6 +4,7 @@ public class Assembler {
     import d.util.BinFile;
     public string fp;
     public string[] srcCode;
+    public string[] symbols;   //   The symbols will have to be passed to the binary file, potentially.  
     public BinFile!(bf_ByteCode) binFile;
     public this(string filePath) {
         import std.array;
