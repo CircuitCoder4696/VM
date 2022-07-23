@@ -43,13 +43,13 @@ public class Assembler {
             case "procedure":
                 writeln("enter procedure for `",instSegs[1],"`;");
                 this.binFile.newSymbol(instSegs[1]);
-                writeln("defined symbols= ",assembly.binFile.ff.symbols,";");
+                writeln("defined symbols= ",this.binFile.ff.symbols,";");
                 break;
             case "start":
                 binFile.start= instSegs[1];
                 writeln("start symbol: ",binFile.start,";");
                 this.binFile.newSymbol(instSegs[1]);
-                writeln("defined symbols= ",assembly.binFile.ff.symbols,";");
+                writeln("defined symbols= ",this.binFile.ff.symbols,";");
                 break;
             default:
                 writeln("unknown_inst=`",inst,"`;");
