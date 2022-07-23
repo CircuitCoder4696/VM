@@ -106,7 +106,6 @@ public class BinFile(FileFormat):binary_file {
     public string start;
     public this(string filePath) {
         this.fs= filePath;
-        void[] data= read(filePath);
-        this.ff= new FileFormat(data);
+        this.ff= new FileFormat(new void[60000]);
     };
 };

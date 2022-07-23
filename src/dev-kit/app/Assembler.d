@@ -44,7 +44,7 @@ public class Assembler {
             if(assembleInst(inst))continue;
             writeln("Unknown instruction:   ",inst);
         };
-        this.binFile= new BinFile!bf_ByteCode(cast(void[]) result);
+        this.binFile= new BinFile!bf_ByteCode(this.fp);
         return this;
     };
 };
