@@ -3,6 +3,7 @@ module d.util.BinFile;
 public class FileFormat {
     import d.util.bits;
     import std.conv:to;
+    import std.stdio:writeln;
     public string[] symbols= [];
     public void[] data;
     private enum:uint {
