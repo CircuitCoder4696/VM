@@ -35,10 +35,12 @@ public class Assembler {
                 writeln("object path: ",(inst[(instI +7)..$]),";");
                 break;
             case "start":
-                writeln("set the main instruction symbol.  ");
                 binFile.start= instSegs[1];
+                writeln("start symbol: ",binFile.start,";");
                 break;
-            default:return false;
+            default:
+                writeln("unknown_inst=`",inst,"`;");
+                return false;
         };
         return true;
     };
@@ -47,10 +49,7 @@ public class Assembler {
         ubyte[] result= [];
         foreach(inst; this.srcCode) {
             if((cast(size_t) inst[].ptr)==0)return this;   //   Avoid segmentaton.  
-            writeln("/----- (1)");
             if(assembleInst(inst))continue;
-            writeln("\\----- (1)");
-            writeln("Unknown instruction:   ",inst);
         };
         this.binFile= new BinFile!bf_ByteCode(this.fp);
         return this;
