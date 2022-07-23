@@ -97,6 +97,9 @@ public class BinFile(FileFormat):binary_file {
         this.ff.newSymbol(symbol);
     };
     public void[] data() @property {
-        return this.ff.genData();
+        writeln("/----- (2)");
+        void[] result= this.ff.genData();
+        writeln("\\----- (2)");
+        return result;
     };
 };

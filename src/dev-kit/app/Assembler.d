@@ -65,15 +65,15 @@ public class Assembler {
             if((cast(size_t) inst[].ptr)==0)return this;   //   Avoid segmentaton.  
             if(assembleInst(inst))continue;
         };
-        writeln("/----- (1)");
         this.binFile= new BinFile!bf_ByteCode(this.fp);
-        writeln("\\----- (1)");
         return this;
     };
     //getters:
         import std.stdio:writeln;
         public void[] data() @property @trusted {
+            writeln("/----- (1)");
             void[] result= this.binFile.data;   //   Data is is generated and can't be directly overridden.  
+            writeln("\\----- (1)");
             return result;   //   Data is is generated and can't be directly overridden.  
         };
         public string[] symbols() @property {
