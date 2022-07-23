@@ -27,7 +27,7 @@ public class FileFormat {
         return [1,0];
     };
     public ulong getEntry_Pointer() {
-        return (cast(format_mainHeader*) this.data)[0];
+        return (cast(format_mainHeader*) this.data)[0].entry_Ptr;
     };
 };
 
@@ -58,30 +58,47 @@ binary_file provides `d.util->BinFile:this(string)` with data getters and setter
 public abstract class binary_file {
     public FileFormat ff;
     private string fs;
+    protected size_t rPtr,wPtr;
     // private void[] data;
     private ubyte get08(size_t ptr, uint index= 0) {
-        return (cast(ubyte*) ((cast(size_t)this.ff.data) + ptr))[index];
+        return (cast(ubyte*) 
+                (
+                    (cast(size_t)
+                        this.ff.data.ptr
+                    )
+                    +
+                    ptr
+                )
+        )[index];
     };
     private ushort get16(size_t ptr, uint index= 0) {
-        return (cast(ushort*) ((cast(size_t)this.ff.data) + ptr))[index];
+        return (cast(ushort*)
+                (
+                    (cast(size_t)
+                        this.ff.data.ptr
+                    )
+                    +
+                    ptr
+                )
+            )[index];
     };
     private uint get32(size_t ptr, uint index= 0) {
-        return (cast(uint*) ((cast(size_t)this.ff.data) + ptr))[index];
+        return (cast(uint*) ((cast(size_t)this.ff.data.ptr) + ptr))[index];
     };
     private ulong get64(size_t ptr, uint index= 0) {
-        return (cast(ulong*) ((cast(size_t)this.ff.data) + ptr))[index];
+        return (cast(ulong*) ((cast(size_t)this.ff.data.ptr) + ptr))[index];
     };
     private void set08(size_t ptr, uint index= 0, ubyte val= 0) {
-        (cast(ubyte*) ((cast(size_t)this.ff.data) + ptr))[index]= val;
+        (cast(ubyte*) ((cast(size_t)this.ff.data.ptr) + ptr))[index]= val;
     };
     private void set16(size_t ptr, uint index= 0, ushort val= 0) {
-        (cast(ushort*) ((cast(size_t)this.ff.data) + ptr))[index]= val;
+        (cast(ushort*) ((cast(size_t)this.ff.data.ptr) + ptr))[index]= val;
     };
     private void set32(size_t ptr, uint index= 0, uint val= 0) {
-        (cast(uint*) ((cast(size_t)this.ff.data) + ptr))[index]= val;
+        (cast(uint*) ((cast(size_t)this.ff.data.ptr) + ptr))[index]= val;
     };
     private void set64(size_t ptr, uint index= 0, ulong val= 0) {
-        (cast(ulong*) ((cast(size_t)this.ff.data) + ptr))[index]= val;
+        (cast(ulong*) ((cast(size_t)this.ff.data.ptr) + ptr))[index]= val;
     };
     public size_t wPtr= 0;
     public size_t rPte= 0;
