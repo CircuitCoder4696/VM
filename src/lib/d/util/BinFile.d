@@ -1,11 +1,10 @@
 module d.util.BinFile;
 
-public class FileFormat {
+public abstract class FileFormat {
     import d.util.bits;
     import std.conv:to;
     import std.stdio:writeln;
     public string[] symbols= [];
-    public void[] data;
     private enum:uint {
         Executable,
         Loadable,
@@ -28,6 +27,7 @@ public class FileFormat {
     public size_t[] getMagic() {
         return [1,0];
     };
+    public abstract void[] genData();   //   Generates the binary data of the file.  
     public ulong getEntry_Pointer() {
         return (cast(format_mainHeader*) this.data)[0].entry_Ptr;
     };
