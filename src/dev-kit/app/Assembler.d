@@ -26,6 +26,7 @@ public class Assembler {
             ==
             0x20
         )if(instI<inst.length)instI++;
+        if(inst.length<=instI)return true;
         string[] instSegs= inst[instI..$].split(" ");
         switch(instSegs[0]) {
             case "object":
@@ -41,7 +42,10 @@ public class Assembler {
         import std;
         ubyte[] result= [];
         foreach(inst; this.srcCode) {
+            writeln("/----- (1)");
+            if((cast(size_t) inst[].ptr)==0)return this;   //   Avoid segmentaton.  
             if(assembleInst(inst))continue;
+            writeln("\\----- (1)");
             writeln("Unknown instruction:   ",inst);
         };
         this.binFile= new BinFile!bf_ByteCode(this.fp);
