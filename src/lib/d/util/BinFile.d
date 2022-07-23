@@ -1,9 +1,10 @@
 module d.util.BinFile;
 
-public abstract class FileFormat {
+public class FileFormat {
     import d.util.bits;
     import std.conv:to;
     import std.stdio:writeln;
+    private BinFile parent;
     public string[] symbols= [];
     private enum:uint {
         Executable,
@@ -17,7 +18,6 @@ public abstract class FileFormat {
         BitField!Mode_IterLen mode;
     };
     import std.format;
-    pragma(msg, "format_sectionHeader.sizeof= %s;".format(format_sectionHeader.sizeof));
     private struct format_mainHeader {
         uint magic;
         uint dts;
@@ -34,6 +34,9 @@ public abstract class FileFormat {
         writeln("[Symbol] ",__MODULE__," @",__LINE__,":   symbol(",symbol,");");
         return result;
     };
+    public this(BinFile parent) {
+        this.parent= parent;
+    };
 };
 
 public class bf_ByteCode:FileFormat {
@@ -41,6 +44,7 @@ public class bf_ByteCode:FileFormat {
     private void[] data;
     public this(void[] data) {
         this.data= data;
+        this.ff= new FileFormat();
     };
     public T getValue(T)(size_t ptr) {
         return (
@@ -52,13 +56,18 @@ public class bf_ByteCode:FileFormat {
         )[0];
     };
     public void __wMainHeader(format_mainHeader mainHeader, FileFormat fileFormat) {
+        writeln("/----- (4)");
+        assert(fileFormat !is null, "`fileFormat` shouldn't be null.  ");
         writeln("::= ",fileFormat.symbols,";");
+        writeln("\\----- (4)");
     };
     public void __wSectionHeaders(format_sectionHeader[] sectionHeaders, FileFormat fileFormat) {};
     override public void[] genData() {
         void[] result= new void[60000];
         format_mainHeader mainHeader= *(cast(format_mainHeader*) result.ptr);
+        writeln("/----- (3)");
         this.__wMainHeader(mainHeader, this.ff);
+        writeln("\\----- (3)");
         format_sectionHeader[] sectionHeaders= (cast(format_sectionHeader*) 
         (
             (cast(size_t)

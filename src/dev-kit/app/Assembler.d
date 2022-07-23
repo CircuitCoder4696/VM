@@ -1,5 +1,7 @@
 module app.Assembler;
 
+private enum devMode= false;
+
 public class Assembler {
     import d.util.BinFile;
     public string fp;
@@ -53,7 +55,7 @@ public class Assembler {
                 writeln("defined symbols= ",this.binFile.ff.symbols,";");
                 break;
             default:
-                writeln("unknown_inst=`",inst,"`;");
+                static if(devMode)writeln("unknown_inst=`",inst,"`;");
                 return false;
         };
         return true;
