@@ -1,0 +1,24 @@
+object myApp;
+
+start main:void(ArgV:string[]);
+
+procedure app.main->xyz:int(int,int) {   //   The procedure name doesn't do anything, it only provides an address.  The procedure itself depends entirely on the block-statement.  Parameters are pushed to the stack by the invoke-statement.  
+    move rp 0;
+    move r0 1;
+    invoke(rt::op::ii_Addi) rp r0;
+};
+
+procedure rand {   //   Returns a random value.  
+    move r0 0;
+    move r1 80;
+    decLoop r0 {
+        dereference r0 r1;
+    };
+    move rp r0;
+};
+
+procedure app.main->main:void(ArgV:string[]) {
+    move r0 0;
+    derefOffset r0 1;   //   rp does not have instructions to dereferenced something.  
+    move rp r0;   //   Return the first argument.  
+};

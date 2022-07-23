@@ -4,6 +4,7 @@ import templates.AppInit;
 
 public class Main:AppInit {
     import _vm_main;
+    import std.file:exists,read;
     import std.stdio:writeln;
     public void init(string arg) { switch(arg) {
     case "-run":
@@ -24,9 +25,10 @@ public class Main:AppInit {
         writeln(params["run"]);
         VM vm= new VM();
         foreach(p; params["run"])if(exists(p)) {
-            vm.newThread(read(p));
+            vm.____newThread(read(p));
         } else {
             writeln("Could not find executable \"",p,"\"");
         };
+        writeln(vm.____runOneInst());
     };
 };

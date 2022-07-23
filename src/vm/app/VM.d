@@ -33,7 +33,7 @@ public class VM {
         return;
     };
 	private static void f_ff_00(Proc proc) {
-        VM.newThread(cast(ubyte[])proc.mem);
+        VM.____newThread(proc.mem);
     };
 	static this() {
 		this.vm[0x00]= &f_00;
@@ -43,7 +43,7 @@ public class VM {
 		this.vm_ff[0x00]= &f_ff_00;
 		this.bf_ff[0x00]= true;
 	};
-	public static void newThread(ubyte[] mem) {
+	public static void ____newThread(void[] mem) {
         size_t j= this.threadI;
         foreach(i; 0 .. (totalThreadsPerProcess +1)) {
             if(
@@ -60,13 +60,14 @@ public class VM {
         this.threads[this.threadI%totalThreadsPerProcess]= result;
         result.proc= Proc(0,0,0,0, 0,0, 0, 0, 0, 0, cast(void[]) mem);
     };
-    public void runInst() {
+    public int ____runOneInst() {
+        if(this.proc.mem.length <= this.proc.ip)return 1;
         ubyte opcode= (cast(ubyte[])this.proc.mem)[this.proc.ip++];
         if(this.running) {
-            if(!this.bf[opcode])return;
+            if(!this.bf[opcode])return 2;
             this.vm[opcode](this.proc);
-            return;
+            return 0;
         };
-        return;
+        return 0;
     };
 };
