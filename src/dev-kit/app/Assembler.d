@@ -28,13 +28,14 @@ public class Assembler {
         )if(instI<inst.length)instI++;
         if(inst.length<=instI)return true;
         string[] instSegs= inst[instI..$].split(" ");
+        if(this.binFile is null)
+            this.binFile= new BinFile!(bf_ByteCode)(this.fp);
         switch(instSegs[0]) {
             case "object":
                 writeln("object path: ",(inst[(instI +7)..$]),";");
                 break;
             case "start":
-                writeln("/----- (2)");
-                if(binFile is null)writeln("[Err] ",__MODULE__," @,",__LINE__,":   `binFile` should not be null.  ");
+                if(binFile is null)writeln("[Err] ",__MODULE__," @",__LINE__,":   `binFile` should not be null.  ");
                 binFile.start= instSegs[1];
                 writeln("\\----- (2)");
             default:return false;
