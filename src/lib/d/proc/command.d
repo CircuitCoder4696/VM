@@ -13,10 +13,11 @@ public class ArgHandler {
         // };
         this.pdDict["compile"]= "c";
     };
-    public string[] opDispatch(string mode)() {
+    public string[] opDispatch(string param)() {
+        // import std.array;
+        // if(this.pdDict.keys.indexOf(param)==-1)return null;
         bool appenArgs= false;
         string[] result;
-        foreach(arg; this.ArgV)if()
-        return [mode];
+        return [param];
     };
 };
