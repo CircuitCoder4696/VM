@@ -139,4 +139,7 @@ public class BinFile(FileFormat):binary_file {
         this.fs= filePath;
         this.ff= new FileFormat(new void[60000]);
     };
+    public void newSymbol(string symbol) {
+        this.ff.newSymbol(symbol);
+    };
 };
