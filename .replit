@@ -1,4 +1,4 @@
-run = "dub build --config=\"vm\" --force && ./vm -s ./test-testassembler/myApp.hlAsm a b c -run ./myApp -s d e f"
+run = "bash ./VMDK.sh"
 
 [nix]
 channel = "stable-21_11"

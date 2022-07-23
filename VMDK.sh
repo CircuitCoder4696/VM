@@ -1,0 +1,1 @@
+dub build --config='vmdk' --force && ./vmdk ./test-testassembler/myApp.hlAsm a b c -run ./myApp -s d e f

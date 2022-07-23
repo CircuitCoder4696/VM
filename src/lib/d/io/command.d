@@ -1,5 +1,5 @@
 module d.io.command;
 
-public struct ArgHandler {
+public class ArgHandler {
     public static string[] ArgV;
 };
