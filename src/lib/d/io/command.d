@@ -5,8 +5,10 @@ public class ArgHandler {
     private string[string] pde;
     public this(string... pd)(string[] ArgV, pd parameterDefinitions) {
         this.ArgV= ArgV;
+        string[] pdeSegs;
         foreach(pde; parameterDefinitions) {
-            pdeSegments= pde.split(":");
+            pdeSegs= pde.split(":");
+            pdDict[pdeSegs[0]]= pdeSegs[1];
         };
     };
     public static string[] opDispatch(string param)() {
