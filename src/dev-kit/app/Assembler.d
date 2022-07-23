@@ -35,9 +35,9 @@ public class Assembler {
                 writeln("object path: ",(inst[(instI +7)..$]),";");
                 break;
             case "start":
-                if(binFile is null)writeln("[Err] ",__MODULE__," @",__LINE__,":   `binFile` should not be null.  ");
+                writeln("set the main instruction symbol.  ");
                 binFile.start= instSegs[1];
-                writeln("\\----- (2)");
+                break;
             default:return false;
         };
         return true;
