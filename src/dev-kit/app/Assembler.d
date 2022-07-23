@@ -71,7 +71,7 @@ public class Assembler {
     //getters:
         import std.stdio:writeln;
         public void[] data() @property @trusted {
-            return this.binFile.ff.data.dup;   //   Data is duped to avoid the data being overridden, by code outside of the assembler itself.  
+            return this.binFile.data;   //   Data is is generated and can't be directly overridden.  
         };
         public string[] symbols() @property {
             if(this.binFile is null)writeln("[Err] ",__MODULE__," @",__LINE__,":   `this.binFile` shouldn't be null.  ");
