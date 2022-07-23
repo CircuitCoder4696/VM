@@ -7,12 +7,12 @@ public class Assembler {
     public string fp;
     public string[] srcCode;
     // public string[] symbols;   //   The symbols will have to be passed to the binary file, potentially.  
-    public BinFile!(bf_ByteCode) binFile;
+    public BinFile binFile;
     public this(string filePath) {
         import std.array;
         import std.file:exists,read;
         import std.stdio:writeln;
-        this.binFile= new BinFile!bf_ByteCode(filePath);
+        this.binFile= new BinFile(filePath);
         if(this.binFile is null)writeln("[Err] ",__MODULE__," @",__LINE__,":   `this.binFile` is still null!  ");
         // if(this.binFile.ff is null)this.binFile.ff= new bf_ByteCode(new void[60000]);   //   Make sure `this.binFile.ff` is not null.  
         if(this.binFile.ff is null)writeln("[Err] ",__MODULE__," @",__LINE__,":   `this.binFile.ff` is still null!  ");
@@ -38,7 +38,7 @@ public class Assembler {
         string[] instSegs= inst[instI..$].split(" ");
         writeln(this.binFile);
         if(this.binFile is null)
-            this.binFile= new BinFile!(bf_ByteCode)(this.fp);
+            this.binFile= new BinFile(this.fp);
         switch(instSegs[0]) {   //SearchIndex:   inst.elements;
             case "object":
                 writeln("object path: ",(inst[(instI +7)..$]),";");
@@ -67,7 +67,7 @@ public class Assembler {
             if((cast(size_t) inst[].ptr)==0)return this;   //   Avoid segmentaton.  
             if(assembleInst(inst))continue;
         };
-        this.binFile= new BinFile!bf_ByteCode(this.fp);
+        this.binFile= new BinFile(this.fp);
         return this;
     };
     //getters:

@@ -27,7 +27,9 @@ public class FileFormat {
     public size_t[] getMagic() {
         return [1,0];
     };
-    public abstract void[] genData();   //   Generates the binary data of the file.  
+    public void[] genData() {   //   Generates the binary data of the file.  
+        return [];   //   This returns an empty array by default.  
+    };
     public size_t newSymbol(string symbol) {
         size_t result= this.symbols.length;
         this.symbols ~= [symbol];
@@ -41,10 +43,8 @@ public class FileFormat {
 
 public class bf_ByteCode:FileFormat {
     public FileFormat ff;
-    private void[] data;
-    public this(void[] data) {
-        this.data= data;
-        this.ff= new FileFormat();
+    public this(BinFile parent) {
+        super(parent);
     };
     public T getValue(T)(size_t ptr) {
         return (
@@ -96,12 +96,12 @@ public abstract class binary_file {
     private string fs;
 };
 
-public class BinFile(FileFormat):binary_file {
+public class BinFile:binary_file {
     import std.stdio:writeln;
     public string start;
     public this(string filePath) {
         this.fs= filePath;
-        this.ff= new FileFormat(new void[60000]);
+        this.ff= new bf_ByteCode(this);
     };
     public void newSymbol(string symbol) {
         this.ff.newSymbol(symbol);
