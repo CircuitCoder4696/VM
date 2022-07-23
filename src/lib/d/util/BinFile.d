@@ -53,13 +53,14 @@ public class bf_ByteCode:FileFormat {
             )
         )[0];
     };
+    public void __wMainHeader(format_mainHeader mainHeader, FileFormat fileFormat) {};
+    public void __wSectionHeaders(format_sectionHeader[] sectionHeaders, FileFormat fileFormat) {};
     public void[] genData() {
         void[] result= new void[60000];
-        ubyte* d08= cast(ubyte*) result.ptr;
-        ushort* d16= cast(ushort*) result.ptr;
-        uint* d32= cast(uint*) result.ptr;
-        ulong* d64= cast(ulong*) result.ptr;
-        
+        format_mainHeader mainHeader= *(cast(format_mainHeader*) result.ptr);
+        this.__wMainHeader(mainHeader, this.ff);
+        format_sectionHeader[] sectionHeaders= cast(format_sectionHeader*) ((cast(size_t)result.ptr) + format_mainHeader.sizeof)[0..(mainHeader.sectionTable_IterLen)];
+        this.__wSectionHeaders(sectionHeaders, this.ff);
     };
 };
 
