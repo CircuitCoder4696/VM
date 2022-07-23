@@ -47,4 +47,8 @@ public class Assembler {
         this.binFile= new BinFile!bf_ByteCode(this.fp);
         return this;
     };
+    //getters:
+        public void[] data() @property @safe {
+            return this.ff.dara.dup;   //   Data is duped to avoid the data being overridden, by code outside of the assembler itself.  
+        };
 };
