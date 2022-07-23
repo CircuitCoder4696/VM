@@ -46,6 +46,14 @@ public class bf_ByteCode:FileFormat {
     };
 };
 
+/++
+binary_file provides `d.util->BinFile:this(string)` with data getters and setters, along with a builtin pointer for the getters and another for the setters.  You can choose not to let the pointer increment simply by passing -1 as the value of index.  
+* `this.get08:ubyte(ptr:size_t,index:uint)`
+* `this.get16:ushort(ptr:size_t,index:uint)`
+* `this.get32:uint(ptr:size_t,index:uint)`
+* `this.get64:ulong(ptr:size_t,index:uint)`
+
+++/
 public abstract class binary_file {
     public FileFormat ff;
     private string fs;
