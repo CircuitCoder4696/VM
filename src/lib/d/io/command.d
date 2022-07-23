@@ -2,8 +2,9 @@ module d.io.command;
 
 public class ArgHandler {
     private string[] ArgV;
-    private string[string] pde;
-    public this(string... pd)(string[] ArgV, pd parameterDefinitions) {
+    private string[string] pdDict;
+    public this(pd...)(string[] ArgV, pd parameterDefinitions) {
+        import std.array;
         this.ArgV= ArgV;
         string[] pdeSegs;
         foreach(pde; parameterDefinitions) {
@@ -11,12 +12,19 @@ public class ArgHandler {
             pdDict[pdeSegs[0]]= pdeSegs[1];
         };
     };
-    public static string[] opDispatch(string param)() {
+    public string[] opDispatch(string param)() {
+        writeln(param);
         bool appendArguments= false;
         string[] result;
         foreach(a; this.ArgV)if(a[0]=='-') {
             appendArguments= false;
-            if(a[1..$]==param)appendArguments= true;
+            
+            if(this.pdDict.keys().indexOf(param)==-1)return;
+            if(
+                a[1..$]
+                ==
+                this.pdDict[param]
+            )appendArguments= true;
         } else {
             if(appendArguments)result ~= [a];
         };
