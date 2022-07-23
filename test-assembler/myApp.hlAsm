@@ -2,6 +2,22 @@ object myApp;
 
 start main:void(ArgV:string[]);
 
+procedure std->Math::static.sum(T):T(T...) {
+    alias T= ?
+    param data:T...
+    move r0 param data
+    move r1 paramLen data
+    move r2 (indexOf (single paramType data) in ct::types::*)
+    move r3 r2
+    propertyEmpty r3
+    move rp r3
+    decLoop r1 {
+        move r3 r0
+        dereference r3 r1
+        invoke(rt::op::$(T.sym~T.sym)_Addi) rp r3
+    }
+};
+
 procedure app.main->xyz:int(int,int) {   //   The procedure name doesn't do anything, it only provides an address.  The procedure itself depends entirely on the block-statement.  Parameters are pushed to the stack by the invoke-statement.  
     move rp 0;
     move r0 1;
