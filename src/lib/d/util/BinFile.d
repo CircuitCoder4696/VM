@@ -154,7 +154,7 @@ public class BinFile(FileFormat):binary_file {
     public void newSymbol(string symbol) {
         this.ff.newSymbol(symbol);
     };
-    public void[] data() @proprty {
+    public void[] data() @property {
         return this.ff.genData();
     };
 };
