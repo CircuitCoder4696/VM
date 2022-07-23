@@ -62,7 +62,7 @@ public class bf_ByteCode:FileFormat {
     };
     public void __wSectionHeaders(format_sectionHeader[] sectionHeaders, FileFormat fileFormat) {};
     override public void[] genData() {
-        void[] result= new void[60000];
+        void[] result= new void[400];
         format_mainHeader mainHeader= *(cast(format_mainHeader*) result.ptr);
         writeln("/----- (3)");
         // assert(this.ff !is null, "`bf_ByteCode:this(...).ff` shouldn't be null.  ");
