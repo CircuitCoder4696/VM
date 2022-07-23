@@ -66,6 +66,7 @@ public class bf_ByteCode:FileFormat {
         void[] result= new void[60000];
         format_mainHeader mainHeader= *(cast(format_mainHeader*) result.ptr);
         writeln("/----- (3)");
+        assert(this.ff !is null, "`bf_ByteCode:this(...).ff` shouldn't be null.  ");
         this.__wMainHeader(mainHeader, this.ff);
         writeln("\\----- (3)");
         format_sectionHeader[] sectionHeaders= (cast(format_sectionHeader*) 
