@@ -48,7 +48,7 @@ public class Assembler {
         return this;
     };
     //getters:
-        public void[] data() @property @safe {
+        public void[] data() @property @trusted {
             return this.binFile.ff.data.dup;   //   Data is duped to avoid the data being overridden, by code outside of the assembler itself.  
         };
 };
