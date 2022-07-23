@@ -53,6 +53,14 @@ public class bf_ByteCode:FileFormat {
             )
         )[0];
     };
+    public void[] genData() {
+        void[] result= new void[60000];
+        ubyte* d08= cast(ubyte*) result.ptr;
+        ushort* d16= cast(ushort*) result.ptr;
+        uint* d32= cast(uint*) result.ptr;
+        ulong* d64= cast(ulong*) result.ptr;
+        
+    };
 };
 
 /++
