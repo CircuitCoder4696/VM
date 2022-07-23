@@ -57,7 +57,7 @@ public class bf_ByteCode:FileFormat {
         writeln("::= ",fileFormat.symbols,";");
     };
     public void __wSectionHeaders(format_sectionHeader[] sectionHeaders, FileFormat fileFormat) {};
-    public void[] genData() {
+    override public void[] genData() {
         void[] result= new void[60000];
         format_mainHeader mainHeader= *(cast(format_mainHeader*) result.ptr);
         this.__wMainHeader(mainHeader, this.ff);
@@ -155,6 +155,6 @@ public class BinFile(FileFormat):binary_file {
         this.ff.newSymbol(symbol);
     };
     public void[] data() @proprty {
-        return this.ff.genData():
+        return this.ff.genData();
     };
 };
