@@ -73,9 +73,9 @@ public class Assembler {
             return this.binFile.ff.data.dup;   //   Data is duped to avoid the data being overridden, by code outside of the assembler itself.  
         };
         public string[] symbols() @property {
-            if(this.binFile is null)writeln("`this.binFile` shouldn't be null.  ");
-            if(this.binFile.ff is null)writeln("`this.binFile.ff` shouldn't be null.  ");
-            if(this.binFile.ff.symbols is null)writeln("`this.binFile.ff.symbols` shouldn't be null.  ");
+            if(this.binFile is null)writeln("[Err] ",__MODULE__," @",__LINE__,":   `this.binFile` shouldn't be null.  ");
+            if(this.binFile.ff is null)writeln("[Err] ",__MODULE__," @",__LINE__,":   `this.binFile.ff` shouldn't be null.  ");
+            if(this.binFile.ff.symbols is null)writeln("[Err] ",__MODULE__," @",__LINE__,":   `this.binFile.ff.symbols` shouldn't be null.  ");
             writeln("symbols= ",this.binFile.ff.symbols,";");
             return this.binFile.ff.symbols.dup;
         };
