@@ -11,6 +11,7 @@ public void main(string[] ArgV) {
         writeln("/----- (0)");
         writeln(assembly.assemble().data);
         writeln("\\----- (0)");
+        writeln("defined symbols= ",assembly.binFile.ff.symbols,";");
     };
     writeln(ah.getParam("compile"));
     writeln(ah.getParam("args"));

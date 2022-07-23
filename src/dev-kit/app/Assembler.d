@@ -9,6 +9,7 @@ public class Assembler {
         import std.array;
         import std.file:exists,read;
         import std.stdio:writeln;
+        if(this.binFile.ff is null)this.binFile.ff= new typeof(this.binFile.ff) (this.fp, new void[60000]);   //   Make sure `this.binFile.ff` is not null.  
         this.fp= filePath;
         if(!exists(this.fp)) {
             writeln("[Err] ",__MODULE__," @",__LINE__,":   Could not find file \"",this.fp,"\"");
@@ -28,6 +29,7 @@ public class Assembler {
         )if(instI<inst.length)instI++;
         if(inst.length<=instI)return true;
         string[] instSegs= inst[instI..$].split(" ");
+        writeln(this.binFile);
         if(this.binFile is null)
             this.binFile= new BinFile!(bf_ByteCode)(this.fp);
         switch(instSegs[0]) {   //SearchIndex:   inst.elements;
@@ -36,10 +38,12 @@ public class Assembler {
                 break;
             case "procedure":
                 writeln("enter procedure for `",instSegs[1],"`;");
+                this.binFile.ff.symbols ~= [instSegs[1]];
                 break;
             case "start":
                 binFile.start= instSegs[1];
                 writeln("start symbol: ",binFile.start,";");
+                this.binFile.ff.symbols ~= [instSegs[1]];
                 break;
             default:
                 writeln("unknown_inst=`",inst,"`;");
