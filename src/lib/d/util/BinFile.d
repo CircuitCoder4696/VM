@@ -28,9 +28,6 @@ public abstract class FileFormat {
         return [1,0];
     };
     public abstract void[] genData();   //   Generates the binary data of the file.  
-    public ulong getEntry_Pointer() {
-        return (cast(format_mainHeader*) this.data)[0].entry_Ptr;
-    };
     public size_t newSymbol(string symbol) {
         size_t result= this.symbols.length;
         this.symbols ~= [symbol];
@@ -40,6 +37,7 @@ public abstract class FileFormat {
 };
 
 public class bf_ByteCode:FileFormat {
+    public FileFormat ff;
     private void[] data;
     public this(void[] data) {
         this.data= data;
@@ -61,7 +59,16 @@ public class bf_ByteCode:FileFormat {
         void[] result= new void[60000];
         format_mainHeader mainHeader= *(cast(format_mainHeader*) result.ptr);
         this.__wMainHeader(mainHeader, this.ff);
-        format_sectionHeader[] sectionHeaders= cast(format_sectionHeader*) ((cast(size_t)result.ptr) + format_mainHeader.sizeof)[0..(mainHeader.sectionTable_IterLen)];
+        format_sectionHeader[] sectionHeaders= (cast(format_sectionHeader*) 
+        (
+            (cast(size_t)
+                result.ptr
+            )
+            +
+            format_mainHeader.sizeof
+        ))[0..(
+            mainHeader.sectionTable_IterLen
+        )];
         this.__wSectionHeaders(sectionHeaders, this.ff);
     };
 };
