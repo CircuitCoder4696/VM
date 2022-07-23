@@ -7,6 +7,7 @@ public void main(string[] ArgV) {
     int[int] abc;
     abc[3]= 5;
     writeln(abc.keys);
-    foreach(sourceFile; ah.compile)writeln(sourceFile);
+    // foreach(sourceFile; ah.compile)writeln(sourceFile);
+    writeln(ah.compile);
     writeln("Hello vmdk.  ");
 };

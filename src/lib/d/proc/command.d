@@ -13,20 +13,10 @@ public class ArgHandler {
         // };
         this.pdDict["compile"]= "c";
     };
-    public void opDispatch(string param)() {
-        writeln(param);
-        bool appendArguments= false;
+    public string[] opDispatch(string mode)() {
+        bool appenArgs= false;
         string[] result;
-    //     foreach(a; this.ArgV)if(a[0]=='-') {
-    //         appendArguments= false;
-    //         if(this.pdDict.keys.indexOf(param)==-1)return;
-    //         if(a[1..$]==this.pdDict[param])appendArguments= true;
-    //     } else {
-    //         if(appendArguments)result ~= [a];
-    //     };
-        // return result;
-    };
-    public static string opDispatch(string mode)() {
-        writeln("[",mode,"];");
+        foreach(arg; this.ArgV)if()
+        return [mode];
     };
 };
