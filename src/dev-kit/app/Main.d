@@ -7,7 +7,8 @@ public void main(string[] ArgV) {
     int[int] abc;
     abc[3]= 5;
     writeln(abc.keys);
-    // foreach(sourceFile; ah.compile)writeln(sourceFile);
+    Assembler asm= new Assembler();
+    foreach(sourceFile; ah.getParam("compile"))writeln(asm.assemble(sourceFile).data);
     writeln(ah.getParam("compile"));
     writeln(ah.getParam("args"));
     writeln("Hello vmdk.  ");
