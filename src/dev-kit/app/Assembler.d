@@ -34,6 +34,9 @@ public class Assembler {
             case "object":
                 writeln("object path: ",(inst[(instI +7)..$]),";");
                 break;
+            case "procedure":
+                writeln("enter procedure for `",instSegs[1],"`;");
+                break;
             case "start":
                 binFile.start= instSegs[1];
                 writeln("start symbol: ",binFile.start,";");
