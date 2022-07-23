@@ -26,4 +26,7 @@ public class ArgHandler {
     //     };
         // return result;
     };
+    public static string opDispatch(string mode)() {
+        writeln("[",mode,"];");
+    };
 };
