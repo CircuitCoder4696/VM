@@ -19,12 +19,22 @@ public class Assembler {
         import std.array;
         import std.stdio:writeln;
         int instI= 0;
-        while(inst[instI]==0x20&&instI<inst.length)instI++;
+        if(inst.length==0)return false;
+        while(
+            inst[instI]
+            ==
+            0x20
+            &&
+            instI<inst.length
+        )instI++;
         string[] instSegs= inst[instI..$].split(" ");
         switch(instSegs[0]) {
-            case "obj":
+            case "object":
                 writeln("object path: ",(inst[(instI +4)..$]),";");
+                break;
+            default:return false;
         };
+        return true;
     };
     public typeof(this) assemble() {
         import std;

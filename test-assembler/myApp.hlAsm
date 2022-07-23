@@ -1,6 +1,6 @@
-object myApp;
+object myApp
 
-start main:void(ArgV:string[]);
+start main:void(ArgV:string[])
 
 procedure std->Math::static.sum(T):T(T...) {
     alias T= ?   //   The question mark tells the assembler that this is a template type.  
@@ -16,25 +16,25 @@ procedure std->Math::static.sum(T):T(T...) {
         dereference r3 r1
         invoke(rt::op::$(T.sym~T.sym)_Addi) rp r3
     }
-};
+}
 
 procedure app.main->xyz:int(int,int) {   //   The procedure name doesn't do anything, it only provides an address.  The procedure itself depends entirely on the block-statement.  Parameters are pushed to the stack by the invoke-statement.  
-    move rp 0;
-    move r0 1;
-    invoke(rt::op::ii_Addi) rp r0;
-};
+    move rp 0
+    move r0 1
+    invoke(rt::op::ii_Addi) rp r0
+}
 
 procedure rand {   //   Returns a random value.  
-    move r0 0;
-    move r1 80;
+    move r0 0
+    move r1 80
     decLoop r0 {
-        dereference r0 r1;
-    };
-    move rp r0;
-};
+        dereference r0 r1
+    }
+    move rp r0
+}
 
 procedure app.main->main:void(ArgV:string[]) {
-    move r0 0;
-    derefOffset r0 1;   //   rp does not have instructions to dereferenced something.  
-    move rp r0;   //   Return the first argument.  
-};
+    move r0 0
+    derefOffset r0 1   //   rp does not have instructions to dereferenced something.  
+    move rp r0   //   Return the first argument.  
+}
