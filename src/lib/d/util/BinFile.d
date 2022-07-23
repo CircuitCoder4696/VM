@@ -3,6 +3,7 @@ module d.util.BinFile;
 public class FileFormat {
     import d.util.bits;
     import std.conv:to;
+    public string[] symbols= [];
     public void[] data;
     private enum:uint {
         Executable,
@@ -32,7 +33,6 @@ public class FileFormat {
 };
 
 public class bf_ByteCode:FileFormat {
-    public string[] symbols;
     private void[] data;
     public this(void[] data) {
         this.data= data;
