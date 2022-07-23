@@ -33,7 +33,10 @@ public class Assembler {
                 writeln("object path: ",(inst[(instI +7)..$]),";");
                 break;
             case "start":
+                writeln("/----- (2)");
+                if(binFile is null)writeln("[Err] ",__MODULE__," @,",__LINE__,":   `binFile` should not be null.  ");
                 binFile.start= instSegs[1];
+                writeln("\\----- (2)");
             default:return false;
         };
         return true;
@@ -42,8 +45,8 @@ public class Assembler {
         import std;
         ubyte[] result= [];
         foreach(inst; this.srcCode) {
-            writeln("/----- (1)");
             if((cast(size_t) inst[].ptr)==0)return this;   //   Avoid segmentaton.  
+            writeln("/----- (1)");
             if(assembleInst(inst))continue;
             writeln("\\----- (1)");
             writeln("Unknown instruction:   ",inst);
