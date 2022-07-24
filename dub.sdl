@@ -10,7 +10,7 @@ configuration "vm" {
     sourcePaths "test/vm"
 }
 configuration "vmdk" {
-    version "dbg_03"
+    version "dbg_05"
     targetName "vmdk"
     sourcePaths "src/dev-kit"
     sourcePaths "test/vmdk"
