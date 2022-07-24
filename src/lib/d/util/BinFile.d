@@ -36,6 +36,11 @@ public class FileFormat {
         this.symbols ~= [symbol];
         return result;
     };
+    public size_t newParam(string symbol) {
+        size_t result= this.symbols.length;
+        this.symbols[param]= [];
+        return result;
+    };
     public this(BinFile parent) {
         this.parent= parent;
     };
