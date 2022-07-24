@@ -28,7 +28,7 @@ public abstract class a0Assembler:DevToolChain {
                 log.param(5, inst[1]);
                 return !this.eoas;
             default:
-                log.unknownInst(2, inst[0]);
+                log.unknownInst(5, inst[0]);
         };
         return !this.eoas;
     };
@@ -49,7 +49,7 @@ public abstract class a0Assembler:DevToolChain {
             if(this.binFile is null)writeln("[Err] ",__MODULE__," @",__LINE__,":   `this.binFile` shouldn't be null.  ");
             if(this.binFile.ff is null)writeln("[Err] ",__MODULE__," @",__LINE__,":   `this.binFile.ff` shouldn't be null.  ");
             if(this.binFile.ff.symbols is null)writeln("[Err] ",__MODULE__," @",__LINE__,":   `this.binFile.ff.symbols` shouldn't be null.  ");
-            log.symbols(2, this.binFile.ff.symbols);
+            log.symbols(5, this.binFile.ff.symbols);
             return this.binFile.ff.symbols.dup;
         };
     //properties:
