@@ -106,11 +106,17 @@ public class BinFile:binary_file {
         this.fs= filePath;
         this.ff= new bf_ByteCode(this);
     };
+    public void newParam(string param) {
+        this.ff.newParam(param);
+    };
     public void newSymbol(string symbol) {
         this.ff.newSymbol(symbol);
     };
-    public void newParam(string param) {
-        this.ff.newParam(param);
+    public void newSymbol(string symbol, uint offset) {
+        this.ff.newSymbol(symbol, uint offset);
+    };
+    public void newSymbol(string symbol, uint offset) {
+        this.ff.newSymbol(symbol, uint offset);
     };
     public void[] data() @property {
         void[] result= this.ff.genData();
