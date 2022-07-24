@@ -17,11 +17,13 @@ public abstract class a0Assembler {
     // public string[] symbols;   //   The symbols will have to be passed to the binary file, potentially.  
     public BinFile binFile;
     public bool asmProcedure() {
-        while(this.assemblingAProcedure)switch(this.nextInstSegs()[0]) {
-            case "param":
-                static if(dbg>2)writeln(this.currentInst);
-                this.binFile.newParam(this.currentInstSegs[1]);
-            default:
+        while(this.assemblingAProcedure){
+            switch(this.nextInstSegs()[0]) {
+                case "param":
+                    static if(dbg>2)writeln(this.currentInst);
+                    this.binFile.newParam(this.currentInstSegs[1]);
+                default:
+            };
         };
     };
     //getters:
