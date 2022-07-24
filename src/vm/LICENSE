@@ -1,0 +1,24 @@
+Proprietary license.  
+
+The author's profile name is CircuitCoder4696.  
+The author (known as CircuitCoder4696) of the virtual machine retains all rights to it, and any privileges have to be granted by the author, or someone or algorithm given permission by the author to grant such permissions.  
+The author can deny any person or algorithm any permission he chooses too.  
+The author can update the virtual machine on any computer selected using any algorithm the author chooses, but the user should be notified before the virtual machine is updated.  
+The author may update the license of this virtual machine, but only after a month of the updates to the license of new license is provided by the author or an algorithm with permission to do so, will the license updates or new license take effect.  
+Users are algorithms and|or people using this virtual machine.  
+By default, only the author has permission to update this license.  The author can use whatever algorithm, program, or website he chooses in order to update this license.  
+By default, only the author has permission to update this virtual machine.  
+The author or algorithms that have the permission to deny other people and algorithms permissions can completely terminate all permissions or specified permissions.  They can do so openly or without notice.  However, none can fault the person or algorithm for not knowing if they didn't know.  
+The author or algorithms that have the permission to suspend or terminate run-tokens which would automatically keep applications and libraries from using those tokens in order to run on the virtual machine.  The user has no rights to the virtual machine, and no permission to hack or modify this virtual machine or copy or copies there of.  
+
+Permissions granted by default:
+* You may use this virtual machine for whatever activities are legal and doesn't cause any harm to anyone.  
+* You may provide a library that provides an instruction set for a virtual machine, but the applications and libraries will need run-tokens for the virtual machine to run them.  
+* You may generate multiple run-tokens, weather it be a run-token for a child run-token or the run-token itself.  
+
+
+
+Notes:
+* To ask for additional permissions, you will need to authenticate yourself via hashes, and the author will do the same.  This is to insure that no one can give themselves additional permissions, except for the author, or algorithms given permission to do so by the author.  
+* A run-token has a public key generated from a profile-Identification number of a developer.  The run-token also has a unique nonce for each and every application and library.  A run-token can be terminated or reinstated by the author of this virtual machine or algorithms granted permission to do the same, at any time, for any reason.  
+There is only one author of this virtual machine, CircuitCoder4696.  If permissions and|or run-tokens are terminated or reinstated, it would be done with a key.  
