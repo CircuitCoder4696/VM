@@ -136,6 +136,7 @@ public class Assembler:a0Assembler {
     public typeof(this) assemble() {
         import d.proc.string;
         import std;
+        writeln("Hello world!  ");
         ubyte[] result= [];
         string[] unimplementedInstructions;
         while(!this.eoas) {

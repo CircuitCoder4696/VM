@@ -11,7 +11,9 @@ public void main(string[] ArgV) {
         version(dbg_03)writeln(assembly.assemble().data);
         version(dbg_00)writeln("defined symbols= ",assembly.symbols,";");
     };
+    writeln("/----- (0)");
     version(dbg_00)writeln(ah.getParam("compile"));
+    writeln("\\----- (0)");
     version(dbg_00)writeln(ah.getParam("args"));
     version(dbg_00)writeln("Hello vmdk.  ");
 };
