@@ -1,5 +1,5 @@
 module templates.DevToolChain;
-private enum dbg= 1;
+private enum dbg= 4;
 
 public class DevToolChain_DbgMessage {
     import d.reflection;
