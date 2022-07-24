@@ -25,10 +25,10 @@ public abstract class a0Assembler:DevToolChain {
         if(inst.length <= 0)return !this.eoas;
         switch(inst[0]) {
             case "param":
-                log3.param(inst[1]);
+                log.param(3, inst[1]);
                 return !this.eoas;
             default:
-                log2.unknownInst(inst[0]);
+                log.unknownInst(2, inst[0]);
         };
         return !this.eoas;
     };

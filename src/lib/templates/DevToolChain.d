@@ -4,25 +4,16 @@ private enum dbg= 1;
 public class DevToolChain_DbgMessage {
     import d.reflection;
     import std.stdio:writeln;
-    public uint threshold;
-    public this(uint threshold) {
-        this.threshold= threshold;
-    };
-    public static void opDispatch(string mode, T...)(T message, int line= __LINE__) {
+    public static void opDispatch(string mode, T...)(int threshold, T message, int line= __LINE__) {
         string[] st= stack_trace();
         // foreach(i, sts; st)writeln("[",i,"]: ",sts);
-        static if(this.threshold < dbg)writeln("[",mode,"] ",st[4]," @",line,":   ",message);
+        if(threshold > dbg)writeln("[",mode,"] ",st[4]," @",line,":   ",message);
     };
 };
 
 public abstract class DevToolChain {
     import std.stdio:writeln;
-    public DevToolChain_DbgMessage log= new DevToolChain_DbgMessage(0);
-    public DevToolChain_DbgMessage log1= new DevToolChain_DbgMessage(1);
-    public DevToolChain_DbgMessage log2= new DevToolChain_DbgMessage(2);
-    public DevToolChain_DbgMessage log3= new DevToolChain_DbgMessage(3);
-    public DevToolChain_DbgMessage log4= new DevToolChain_DbgMessage(4);
-    public DevToolChain_DbgMessage log5= new DevToolChain_DbgMessage(5);
+    public DevToolChain_DbgMessage log= new DevToolChain_DbgMessage();
     public static void start0() {
         writeln("/----- (0)");
     };
