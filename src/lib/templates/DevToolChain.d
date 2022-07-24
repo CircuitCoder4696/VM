@@ -7,7 +7,7 @@ public class DevToolChain_DbgMessage {
     public static void opDispatch(string mode, T...)(int threshold, T message, int line= __LINE__) {
         string[] st= stack_trace();
         // foreach(i, sts; st)writeln("[",i,"]: ",sts);
-        if(threshold > dbg)writeln("[",mode,"] ",st[4]," @",line,":   ",message);
+        if(threshold < dbg)writeln("[",mode,"] ",st[4]," @",line,":   ",message);
     };
 };
 
