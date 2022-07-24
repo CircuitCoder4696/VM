@@ -8,9 +8,9 @@ public class FileFormat {
     public string[] symbols= [];
     public uint[string] symbolLines;
     public string[string] aliases;
-    public string[][string] params;
-    public ulong[string] paramDefautValOffsets;
-    public ulong[string] symbolDefautValOffsets;
+    public string[][string] params;   //   List of parameters in each function.  
+    public ulong[string] paramDefautValOffsets;   //   Offset of parameters on the stack.  
+    public ulong[string] symbolDefautValOffsets;   //   Offset of symbols on the stack, starting just after the parameters.  
     private enum:uint {
         Executable,
         Loadable,
