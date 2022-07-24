@@ -1,6 +1,10 @@
 module app.Assembler;
 
-private enum devMode= true;
+version(dbg_01)private enum dbg= 1;
+version(dbg_02)private enum dbg= 2;
+version(dbg_03)private enum dbg= 3;
+version(dbg_04)private enum dbg= 4;
+version(dbg_05)private enum dbg= 5;
 
 public abstract class a0Assembler {
     import d.util.BinFile;
@@ -22,7 +26,7 @@ public abstract class a0Assembler {
             if(this.binFile is null)writeln("[Err] ",__MODULE__," @",__LINE__,":   `this.binFile` shouldn't be null.  ");
             if(this.binFile.ff is null)writeln("[Err] ",__MODULE__," @",__LINE__,":   `this.binFile.ff` shouldn't be null.  ");
             if(this.binFile.ff.symbols is null)writeln("[Err] ",__MODULE__," @",__LINE__,":   `this.binFile.ff.symbols` shouldn't be null.  ");
-            writeln("symbols= ",this.binFile.ff.symbols,";");
+            if(dbg > 2)writeln("symbols= ",this.binFile.ff.symbols,";");
             return this.binFile.ff.symbols.dup;
         };
     //incremented-getters:
@@ -71,7 +75,7 @@ public class Assembler:a0Assembler {
                 this.binFile.setObjPath(instSegs[1]);
                 break;
             case "procedure":
-                writeln("[Symbol] procedure `",this.binFile.objPath,"->",instSegs[1],"`: ",line,";");
+                if(dbg > 1)writeln("[Symbol] procedure `",this.binFile.objPath,"->",instSegs[1],"`: ",line,";");
                 this.binFile.newSymbol(this.binFile.objPath~"->"~instSegs[1], cast(uint) line);
                 if(instSegs.length > 2)this.binFile.asmProcedure(instSegs);
                 break;
@@ -80,7 +84,7 @@ public class Assembler:a0Assembler {
                 this.binFile.newSymbol(instSegs[1]);
                 break;
             default:
-                static if(devMode)writeln("unknown_inst=`",inst,"`;");
+                static if(dbg > 1)writeln("unknown_inst=`",inst,"`;");
                 return false;
         };
         return true;
