@@ -33,7 +33,6 @@ public class FileFormat {
     public size_t newSymbol(string symbol) {
         size_t result= this.symbols.length;
         this.symbols ~= [symbol];
-        writeln("[Symbol] ",__MODULE__," @",__LINE__,":   symbol(",symbol,");");
         return result;
     };
     public this(BinFile parent) {
