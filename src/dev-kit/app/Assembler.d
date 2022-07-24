@@ -40,7 +40,7 @@ public abstract class a0Assembler {
         };
 };
 
-public class Assembler {
+public class Assembler:a0Assembler {
     import d.util.BinFile;
     public bool assembleInst(size_t line, string inst) {
         import std.array;
