@@ -36,7 +36,7 @@ public class FileFormat {
         this.symbols ~= [symbol];
         return result;
     };
-    public size_t newParam(string symbol) {
+    public size_t newParam(string param) {
         size_t result= this.params.length;
         this.symbols[param]= [];
         return result;
