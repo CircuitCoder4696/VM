@@ -41,18 +41,15 @@ public class Assembler {
             this.binFile= new BinFile(this.fp);
         switch(instSegs[0]) {   //SearchIndex:   inst.elements;
             case "object":
-                writeln("object path: ",(inst[(instI +7)..$]),";");
                 break;
             case "procedure":
                 writeln("[Symbol] procedure `",instSegs[1],"`: ",line,";");
                 this.binFile.newSymbol(instSegs[1]);
-                writeln("defined symbols= ",this.binFile.ff.symbols,";");
                 break;
             case "start":
                 binFile.start= instSegs[1];
                 writeln("[Symbol]  ",binFile.start,";");
                 this.binFile.newSymbol(instSegs[1]);
-                writeln("defined symbols= ",this.binFile.ff.symbols,";");
                 break;
             default:
                 static if(devMode)writeln("unknown_inst=`",inst,"`;");
