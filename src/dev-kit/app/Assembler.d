@@ -21,7 +21,7 @@ public abstract class a0Assembler {
             case "param":
                 static if(dbg>2)writeln(this.currentInst);
                 this.binFile.newParam(this.currentInstSegs[1]);
-            default;
+            default:
         };
     };
     //getters:
