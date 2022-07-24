@@ -30,10 +30,14 @@ public abstract class a0Assembler {
             if(dbg > 2)writeln("symbols= ",this.binFile.ff.symbols,";");
             return this.binFile.ff.symbols.dup;
         };
+    //properties:
+        public string currentInst() {
+            return this.srcCode[this.line];
+        }
     //incremented-getters:
         public string nextInst() {
             assert(!this.eoas,"The assembler can't assemble non-existent code.  ");
-            return this.srcCode[this.line++];
+            return this.srcCode[++this.line];
         };
 };
 
