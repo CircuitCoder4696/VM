@@ -8,10 +8,10 @@ public void main(string[] ArgV) {
     Assembler assembly;
     foreach(sourceFile; ah.getParam("compile")) {
         assembly= new Assembler(sourceFile);
-        writeln(assembly.assemble().data);
-        writeln("defined symbols= ",assembly.symbols,";");
+        version(dbg_03)writeln(assembly.assemble().data);
+        version(dbg_00)writeln("defined symbols= ",assembly.symbols,";");
     };
-    writeln(ah.getParam("compile"));
-    writeln(ah.getParam("args"));
-    writeln("Hello vmdk.  ");
+    version(dbg_00)writeln(ah.getParam("compile"));
+    version(dbg_00)writeln(ah.getParam("args"));
+    version(dbg_00)writeln("Hello vmdk.  ");
 };
