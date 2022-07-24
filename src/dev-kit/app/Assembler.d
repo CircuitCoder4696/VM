@@ -50,9 +50,10 @@ public class Assembler:a0Assembler {
         };
         this.srcCode= (cast(string) read(filePath)).split("\n");
     };
-    public bool assembleInst(size_t line, string inst) {
+    public bool assembleInst() {
         import std.array;
         import std.stdio:writeln;
+        string[] inst= this.nextInstruction().split(" ");
         int instI= 0;
         if(inst.length==0)return false;
         while(
