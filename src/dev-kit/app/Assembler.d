@@ -10,6 +10,7 @@ version(dbg_05){private enum dbg= 5;}else
 
 public abstract class a0Assembler:DevToolChain {
     import d.util.BinFile;
+    import std.array;
     public uint limit= 400;
     public bool assemblingAProcedure= false;
     public bool eoas= false;   //   Tells the assembler that there's no more code to assemble.  
