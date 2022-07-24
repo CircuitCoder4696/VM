@@ -36,7 +36,7 @@ public class Assembler {
         )if(instI<inst.length)instI++;
         if(inst.length<=instI)return true;
         string[] instSegs= inst[instI..$].split(" ");
-        writeln(this.binFile);
+        // writeln(this.binFile);
         if(this.binFile is null)
             this.binFile= new BinFile(this.fp);
         switch(instSegs[0]) {   //SearchIndex:   inst.elements;
