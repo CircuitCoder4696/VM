@@ -58,7 +58,7 @@ public class Assembler:a0Assembler {
     public bool assembleInst() {
         import std.array;
         import std.stdio:writeln;
-        string[] inst= this.nextInstruction().split(" ");
+        string[] inst= this.nextInst().split(" ");
         int instI= 0;
         if(inst.length==0)return false;
         while(
