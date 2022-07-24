@@ -122,7 +122,7 @@ public class BinFile:binary_file {
     public void newSymbol(string symbol, uint offset) {
         this.ff.newSymbol(symbol, offset);
     };
-    public void newSymbol(string symbol, uint offset) {
+    public void newParam(string symbol, uint offset) {
         this.ff.newSymbol(symbol, offset);
     };
     public void[] data() @property {
