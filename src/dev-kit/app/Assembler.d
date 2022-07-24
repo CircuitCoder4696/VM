@@ -52,6 +52,7 @@ public class Assembler {
                 break;
             default:
                 static if(devMode)writeln("unknown_inst=`",inst,"`;");
+                unimplementedInstructions ~= [inst];
                 return false;
         };
         return true;
@@ -59,10 +60,13 @@ public class Assembler {
     public typeof(this) assemble() {
         import std;
         ubyte[] result= [];
+        string[] unimplementedInstructions;
         foreach(i, inst; this.srcCode) {
             if((cast(size_t) inst[].ptr)==0)return this;   //   Avoid segmentaton.  
             if(assembleInst(i, inst))continue;
+            if(unimplementedInstructions.indexOf(inst)==-1)unimplementedInstructions ~= [inst];
         };
+        if(unimplementedInstructions.length!=0)writeln("unimplementedInstructions= ",unimplementedInstructions,";");
         this.binFile= new BinFile(this.fp);
         return this;
     };
