@@ -5,6 +5,7 @@ private enum devMode= true;
 public abstract class a0Assembler {
     import d.util.BinFile;
     public bool assemblingAProcedure= false;
+    public bool eoas= false;   //   Tells the assembler that there's no more code to assemble.  
     public uint line;   //   Allow for switching between the assembler's methods.  
     public string fp;
     public string[] srcCode;
@@ -26,6 +27,7 @@ public abstract class a0Assembler {
         };
     //incremented-getters:
         public string nextInst() {
+            is(this.eoas)assert(!thiseoas,"The assembler can't assemble non-existent code.  ");
             return this.srcCode[this.line++];
         };
 };
