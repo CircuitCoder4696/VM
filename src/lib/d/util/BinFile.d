@@ -1,10 +1,12 @@
 module d.util.BinFile;
 
 public class FileFormat {
+    import d.proc.string;
     import d.util.bits;
     import std.conv:to;
     import std.stdio:writeln;
     private BinFile parent;
+    private string objPath;
     public string[] symbols= [];
     public uint[string] symbolLines;
     public string[string] aliases;
@@ -128,5 +130,8 @@ public class BinFile:binary_file {
     public void[] data() @property {
         void[] result= this.ff.genData();
         return result;
+    };
+    public typeof(this) setObjPath(string path) {
+        this.ff.objPath= path;
     };
 };
