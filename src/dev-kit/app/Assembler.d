@@ -41,10 +41,11 @@ public class Assembler {
             this.binFile= new BinFile(this.fp);
         switch(instSegs[0]) {   //SearchIndex:   inst.elements;
             case "object":
+                this.binFile.setObjPath(instSegs[1]);
                 break;
             case "procedure":
                 writeln("[Symbol] procedure `",instSegs[1],"`: ",line,";");
-                this.binFile.newSymbol(instSegs[1]);
+                this.binFile.newSymbol(instSegs[1], line);
                 break;
             case "start":
                 binFile.start= instSegs[1];
