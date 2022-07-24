@@ -66,7 +66,7 @@ public abstract class a0Assembler:DevToolChain {
             if(this.line>=this.srcCode.length)this.eoas= true;
             return this.srcCode[++this.line];
         };
-        public string nextInstSegs() {
+        public string[] nextInstSegs() {
             assert(!this.eoas,"The assembler can't assemble non-existent code.  ");
             if(this.line>=this.srcCode.length)this.eoas= true;
             string result= this.srcCode[++this.line];
