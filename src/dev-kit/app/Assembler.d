@@ -17,11 +17,11 @@ public abstract class a0Assembler {
     // public string[] symbols;   //   The symbols will have to be passed to the binary file, potentially.  
     public BinFile binFile;
     public bool asmProcedure() {
-        while(this.assemblingAProcedure)switch(thisnextInstSegs()[0]) {
+        while(this.assemblingAProcedure)switch(this.nextInstSegs()[0]) {
             case "param":
                 static if(dbg>2)writeln(this.currentInst);
-                this.newParam(this.currentInstSegs[1]);
-            default:null;
+                this.binFile.newParam(this.currentInstSegs[1]);
+            default;
         };
     };
     //getters:
@@ -90,7 +90,7 @@ public class Assembler:a0Assembler {
             case "procedure":
                 if(dbg > 1)writeln("[Symbol] procedure `",this.binFile.objPath,"->",instSegs[1],"`: ",line,";");
                 this.binFile.newSymbol(this.binFile.objPath~"->"~instSegs[1], cast(uint) line);
-                if(instSegs.length > 2)this.asmProcedure(instSegs);
+                if(instSegs.length > 2)this.asmProcedure();
                 break;
             case "start":
                 binFile.start= instSegs[1];
@@ -109,7 +109,7 @@ public class Assembler:a0Assembler {
         string[] unimplementedInstructions;
         while(!this.eoas) {
             if(assembleInst())continue;
-            if(!unimplementedInstructions.contains(inst))unimplementedInstructions ~= [this.currentInst];
+            if(!unimplementedInstructions.contains(this.currentInst))unimplementedInstructions ~= [this.currentInst];
         };
         if(unimplementedInstructions.length!=0)writeln("unimplementedInstructions= ",unimplementedInstructions,";");
         this.binFile= new BinFile(this.fp);
