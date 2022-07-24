@@ -55,19 +55,15 @@ public class bf_ByteCode:FileFormat {
         )[0];
     };
     public void __wMainHeader(format_mainHeader mainHeader, FileFormat fileFormat) {
-        writeln("/----- (4)");
         assert(fileFormat !is null, "`fileFormat` shouldn't be null.  ");
         writeln("::= ",fileFormat.symbols,";");
-        writeln("\\----- (4)");
     };
     public void __wSectionHeaders(format_sectionHeader[] sectionHeaders, FileFormat fileFormat) {};
     override public void[] genData() {
         void[] result= new void[400];
         format_mainHeader mainHeader= *(cast(format_mainHeader*) result.ptr);
-        writeln("/----- (3)");
         // assert(this.ff !is null, "`bf_ByteCode:this(...).ff` shouldn't be null.  ");
         this.__wMainHeader(mainHeader, this);
-        writeln("\\----- (3)");
         format_sectionHeader[] sectionHeaders= (cast(format_sectionHeader*) 
         (
             (cast(size_t)
@@ -107,9 +103,7 @@ public class BinFile:binary_file {
         this.ff.newSymbol(symbol);
     };
     public void[] data() @property {
-        writeln("/----- (2)");
         void[] result= this.ff.genData();
-        writeln("\\----- (2)");
         return result;
     };
 };
