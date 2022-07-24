@@ -12,4 +12,5 @@
 
 * same as [Function ABI](Function ABI).
 * offset 2 stores the offset of the instanes fields.
+* parameter and symbol offsets are incremented by 1.  
 * offset 3 stores the offset of the object fields, which are static fields.  
