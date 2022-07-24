@@ -64,10 +64,10 @@ public class Assembler:a0Assembler {
         while(
             inst[instI]
             ==
-            0x20
+            ""
         )if(instI<inst.length)instI++;
         if(inst.length<=instI)return true;
-        string[] instSegs= inst[instI..$].split(" ");
+        string[] instSegs= inst[instI..$];
         // writeln(this.binFile);
         if(this.binFile is null)
             this.binFile= new BinFile(this.fp);
@@ -78,7 +78,7 @@ public class Assembler:a0Assembler {
             case "procedure":
                 if(dbg > 1)writeln("[Symbol] procedure `",this.binFile.objPath,"->",instSegs[1],"`: ",line,";");
                 this.binFile.newSymbol(this.binFile.objPath~"->"~instSegs[1], cast(uint) line);
-                if(instSegs.length > 2)this.binFile.asmProcedure(instSegs);
+                if(instSegs.length > 2)this.asmProcedure(instSegs);
                 break;
             case "start":
                 binFile.start= instSegs[1];
@@ -96,7 +96,6 @@ public class Assembler:a0Assembler {
         ubyte[] result= [];
         string[] unimplementedInstructions;
         while(!this.eoas) {
-            if((cast(size_t) inst[].ptr)==0)return this;   //   Avoid segmentaton faults.  
             if(assembleInst(i, inst))continue;
             if(unimplementedInstructions.contains(inst))unimplementedInstructions ~= [inst];
         };
