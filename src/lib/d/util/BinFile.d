@@ -38,6 +38,11 @@ public class FileFormat {
         this.symbols ~= [symbol];
         return result;
     };
+    public size_t newSymbol(string symbol) {
+        size_t result= this.symbols.length;
+        this.symbols ~= [symbol];
+        return result;
+    };
     public size_t newParam(string param) {
         size_t result= this.params.length;
         this.params[param]= [];
