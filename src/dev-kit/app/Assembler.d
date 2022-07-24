@@ -77,7 +77,7 @@ public abstract class a0Assembler:DevToolChain {
             uint i,j= cast(uint) result.length;
             while(i<j && result[i]==' ')i++;
             result= result[i..$];
-            if(this.line>=this.srcCode.length)this.eoas= true;
+            if((this.line +1)>=this.srcCode.length)this.eoas= true;
             return result.split(" ");
         };
 };
