@@ -48,7 +48,6 @@ public class Assembler {
                 break;
             case "start":
                 binFile.start= instSegs[1];
-                writeln("[Symbol]  ",binFile.start,";");
                 this.binFile.newSymbol(instSegs[1]);
                 break;
             default:
