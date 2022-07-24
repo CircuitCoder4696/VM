@@ -96,7 +96,7 @@ public class Assembler:a0Assembler {
         ubyte[] result= [];
         string[] unimplementedInstructions;
         while(!this.eoas) {
-            if(assembleInst(i, inst))continue;
+            if(assembleInst())continue;
             if(unimplementedInstructions.contains(inst))unimplementedInstructions ~= [inst];
         };
         if(unimplementedInstructions.length!=0)writeln("unimplementedInstructions= ",unimplementedInstructions,";");
