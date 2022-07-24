@@ -13,10 +13,10 @@ public class Main:DevToolChain {
             version(dbg_00)writeln("defined symbols= ",assembly.symbols,";");
         };
         start0();
-        log.info(ah.getParam("compile"));
+        log.info(0, ah.getParam("compile"));
         stop0();
-        log.info(ah.getParam("args"));
-        log.info("Hello vmdk.  ");
+        log.info(0, ah.getParam("args"));
+        log.info(0, "Hello vmdk.  ");
     };
 };
 
