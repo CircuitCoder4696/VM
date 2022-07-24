@@ -1,11 +1,11 @@
 module app.Assembler;
 
-version(dbg_01){private enum dbg= 1;}else
-version(dbg_02){private enum dbg= 2;}else
-version(dbg_03){private enum dbg= 3;}else
-version(dbg_04){private enum dbg= 4;}else
-version(dbg_05){private enum dbg= 5;}else
-{ private enum dbg= 0; }
+version(dbg_01){ private enum dbg= 1; }else
+version(dbg_02){ private enum dbg= 2; }else
+version(dbg_03){ private enum dbg= 3; }else
+version(dbg_04){ private enum dbg= 4; }else
+version(dbg_05){ private enum dbg= 5; }else
+{ private enum dbg= 0; };
 
 public abstract class a0Assembler {
     import d.util.BinFile;
@@ -58,7 +58,7 @@ public class Assembler:a0Assembler {
     public bool assembleInst() {
         import std.array;
         import std.stdio:writeln;
-        string[] inst= this.nextInstruction().split(" ");
+        string[] inst= this.nextInst().split(" ");
         int instI= 0;
         if(inst.length==0)return false;
         while(
