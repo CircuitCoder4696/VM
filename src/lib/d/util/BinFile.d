@@ -9,7 +9,7 @@ public class FileFormat {
     public uint[string] symbolLines;
     public string[string] aliases;
     public string[][string] params;   //   List of parameters in each function.  
-    public ulong[string] paramDefautValOffsets;   //   Offset of parameters on the stack.  
+    public ulong[string] paramDefautValOffsets;   //   Offset of parameters on the stack, starting with 1 to make room for the return pointer.  
     public ulong[string] symbolDefautValOffsets;   //   Offset of symbols on the stack, starting just after the parameters.  
     private enum:uint {
         Executable,
