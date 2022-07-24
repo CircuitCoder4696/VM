@@ -23,6 +23,7 @@ public class DevToolChain_DbgMessage {
 };
 
 public abstract class DevToolChain {
+    import std.stdio:writeln;
     public DevToolChain_DbgMessage log= new DevToolChain_DbgMessage(0);
     public DevToolChain_DbgMessage log1= new DevToolChain_DbgMessage(1);
     public DevToolChain_DbgMessage log2= new DevToolChain_DbgMessage(2);
