@@ -22,6 +22,7 @@ public abstract class a0Assembler:DevToolChain {
     public bool asmProcedureInstruction() {
         assert(limit-- > 0);
         string[] inst= this.nextInstSegs();
+        if(inst.length <= 0)return !this.eoas;
         switch(inst[0]) {
             case "param":
                 log.param(inst[1]);
