@@ -64,7 +64,7 @@ public class Assembler:a0Assembler {
             case "procedure":
                 writeln("[Symbol] procedure `",this.binFile.objPath,"->",instSegs[1],"`: ",line,";");
                 this.binFile.newSymbol(this.binFile.objPath~"->"~instSegs[1], cast(uint) line);
-                if(instSegs.length > 2)this.binFile.enterProcedure(instSegs);
+                if(instSegs.length > 2)this.binFile.asmProcedure(instSegs);
                 break;
             case "start":
                 binFile.start= instSegs[1];
