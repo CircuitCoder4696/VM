@@ -1,6 +1,6 @@
 module app.Assembler;
 
-private enum devMode= false;
+private enum devMode= true;
 
 public class Assembler {
     import d.util.BinFile;

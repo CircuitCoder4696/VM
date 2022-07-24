@@ -6,6 +6,7 @@ public class FileFormat {
     import std.stdio:writeln;
     private BinFile parent;
     public string[] symbols= [];
+    public string[][string] params= [];
     private enum:uint {
         Executable,
         Loadable,
@@ -100,6 +101,9 @@ public class BinFile:binary_file {
     };
     public void newSymbol(string symbol) {
         this.ff.newSymbol(symbol);
+    };
+    public void newParam(string param) {
+        this.ff.newParam(param);
     };
     public void[] data() @property {
         void[] result= this.ff.genData();
