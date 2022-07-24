@@ -24,7 +24,7 @@ public class Assembler {
         };
         this.srcCode= (cast(string) read(filePath)).split("\n");
     };
-    public bool assembleInst(string inst) {
+    public bool assembleInst(size_t line, string inst) {
         import std.array;
         import std.stdio:writeln;
         int instI= 0;
@@ -44,13 +44,13 @@ public class Assembler {
                 writeln("object path: ",(inst[(instI +7)..$]),";");
                 break;
             case "procedure":
-                writeln("enter procedure for `",instSegs[1],"`;");
+                writeln("[Symbol] procedure `",instSegs[1],"`: ",line,";");
                 this.binFile.newSymbol(instSegs[1]);
                 writeln("defined symbols= ",this.binFile.ff.symbols,";");
                 break;
             case "start":
                 binFile.start= instSegs[1];
-                writeln("start symbol: ",binFile.start,";");
+                writeln("[Symbol]  ",binFile.start,";");
                 this.binFile.newSymbol(instSegs[1]);
                 writeln("defined symbols= ",this.binFile.ff.symbols,";");
                 break;
@@ -63,9 +63,9 @@ public class Assembler {
     public typeof(this) assemble() {
         import std;
         ubyte[] result= [];
-        foreach(inst; this.srcCode) {
+        foreach(i, inst; this.srcCode) {
             if((cast(size_t) inst[].ptr)==0)return this;   //   Avoid segmentaton.  
-            if(assembleInst(inst))continue;
+            if(assembleInst(i, inst))continue;
         };
         this.binFile= new BinFile(this.fp);
         return this;
