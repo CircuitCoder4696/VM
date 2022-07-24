@@ -8,9 +8,7 @@ public void main(string[] ArgV) {
     Assembler assembly;
     foreach(sourceFile; ah.getParam("compile")) {
         assembly= new Assembler(sourceFile);
-        writeln("/----- (0)");
         writeln(assembly.assemble().data);
-        writeln("\\----- (0)");
         writeln("defined symbols= ",assembly.symbols,";");
     };
     writeln(ah.getParam("compile"));

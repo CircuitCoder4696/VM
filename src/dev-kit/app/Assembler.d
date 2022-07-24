@@ -73,10 +73,8 @@ public class Assembler {
     //getters:
         import std.stdio:writeln;
         public void[] data() @property @trusted {
-            writeln("/----- (1)");
             assert(this.binFile !is null, "`this.binFile` can not be null.  ");
             void[] result= this.binFile.data;   //   Data is is generated and can't be directly overridden.  
-            writeln("\\----- (1)");
             return result;   //   Data is is generated and can't be directly overridden.  
         };
         public string[] symbols() @property {
