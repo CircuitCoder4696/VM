@@ -39,10 +39,10 @@ public abstract class a0Assembler {
             return this.binFile.ff.symbols.dup;
         };
     //properties:
-        public string currentInst() {
+        public string currentInst() @property {
             return this.srcCode[this.line];
         };
-        public string currentInstSegs() {
+        public string currentInstSegs() @property {
             string result= this.srcCode[this.line];
             uint i,j= result.length;
             while(i<j && result[i]==' ')i++;
@@ -54,8 +54,8 @@ public abstract class a0Assembler {
             assert(!this.eoas,"The assembler can't assemble non-existent code.  ");
             return this.srcCode[++this.line];
         };
-        public string currentInstSegs() {
-            string result= this.srcCode[this.line];
+        public string nextInstSegs() {
+            string result= this.srcCode[++this.line];
             uint i,j= result.length;
             while(i<j && result[i]==' ')i++;
             result= result[i..$];
