@@ -10,6 +10,7 @@ version(dbg_05){private enum dbg= 5;}else
 
 public abstract class a0Assembler:DevToolChain {
     import d.util.BinFile;
+    public uint limit= 400;
     public bool assemblingAProcedure= false;
     public bool eoas= false;   //   Tells the assembler that there's no more code to assemble.  
     public uint line;   //   Allow for switching between the assembler's methods.  
@@ -18,6 +19,7 @@ public abstract class a0Assembler:DevToolChain {
     // public string[] symbols;   //   The symbols will have to be passed to the binary file, potentially.  
     public BinFile binFile;
     public bool asmProcedureInstruction() {
+        assert(limit-- > 0);
         string[] inst= this.nextInstSegs();
         switch(inst[0]) {
             case "param":
@@ -29,6 +31,7 @@ public abstract class a0Assembler:DevToolChain {
         return !this.eoas;
     };
     public bool asmProcedure() {
+        assert(limit-- > 0);
         string inst;
         while(asmProcedureInstruction());
     };
