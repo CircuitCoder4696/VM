@@ -120,10 +120,10 @@ public class BinFile:binary_file {
         this.ff.newSymbol(symbol);
     };
     public void newSymbol(string symbol, uint offset) {
-        this.ff.newSymbol(symbol, uint offset);
+        this.ff.newSymbol(symbol, offset);
     };
     public void newSymbol(string symbol, uint offset) {
-        this.ff.newSymbol(symbol, uint offset);
+        this.ff.newSymbol(symbol, offset);
     };
     public void[] data() @property {
         void[] result= this.ff.genData();
