@@ -8,22 +8,6 @@ public abstract class a0Assembler {
     public string[] srcCode;
     // public string[] symbols;   //   The symbols will have to be passed to the binary file, potentially.  
     public BinFile binFile;
-    public this(string filePath) {
-        import std.array;
-        import std.file:exists,read;
-        import std.stdio:writeln;
-        this.binFile= new BinFile(filePath);
-        if(this.binFile is null)writeln("[Err] ",__MODULE__," @",__LINE__,":   `this.binFile` is still null!  ");
-        // if(this.binFile.ff is null)this.binFile.ff= new bf_ByteCode(new void[60000]);   //   Make sure `this.binFile.ff` is not null.  
-        if(this.binFile.ff is null)writeln("[Err] ",__MODULE__," @",__LINE__,":   `this.binFile.ff` is still null!  ");
-        if(this.binFile.ff.symbols is null)writeln("[Err] ",__MODULE__," @",__LINE__,":   `this.binFile.ff.symbols` is still null!  ");
-        this.fp= filePath;
-        if(!exists(this.fp)) {
-            writeln("[Err] ",__MODULE__," @",__LINE__,":   Could not find file \"",this.fp,"\"");
-            return;
-        };
-        this.srcCode= (cast(string) read(filePath)).split("\n");
-    };
     //getters:
         import std.stdio:writeln;
         public void[] data() @property @trusted {
@@ -42,6 +26,22 @@ public abstract class a0Assembler {
 
 public class Assembler:a0Assembler {
     import d.util.BinFile;
+    public this(string filePath) {
+        import std.array;
+        import std.file:exists,read;
+        import std.stdio:writeln;
+        this.binFile= new BinFile(filePath);
+        if(this.binFile is null)writeln("[Err] ",__MODULE__," @",__LINE__,":   `this.binFile` is still null!  ");
+        // if(this.binFile.ff is null)this.binFile.ff= new bf_ByteCode(new void[60000]);   //   Make sure `this.binFile.ff` is not null.  
+        if(this.binFile.ff is null)writeln("[Err] ",__MODULE__," @",__LINE__,":   `this.binFile.ff` is still null!  ");
+        if(this.binFile.ff.symbols is null)writeln("[Err] ",__MODULE__," @",__LINE__,":   `this.binFile.ff.symbols` is still null!  ");
+        this.fp= filePath;
+        if(!exists(this.fp)) {
+            writeln("[Err] ",__MODULE__," @",__LINE__,":   Could not find file \"",this.fp,"\"");
+            return;
+        };
+        this.srcCode= (cast(string) read(filePath)).split("\n");
+    };
     public bool assembleInst(size_t line, string inst) {
         import std.array;
         import std.stdio:writeln;
@@ -63,8 +63,8 @@ public class Assembler:a0Assembler {
                 break;
             case "procedure":
                 writeln("[Symbol] procedure `",this.binFile.objPath,"->",instSegs[1],"`: ",line,";");
-                this.binFile.newSymbol(this.binFile.objPath~"->"~instSegs[1], line);
-                if(instSegs.length > 2)this.enterProcedure(instSegs);
+                this.binFile.newSymbol(this.binFile.objPath~"->"~instSegs[1], cast(uint) line);
+                if(instSegs.length > 2)this.binFile.enterProcedure(instSegs);
                 break;
             case "start":
                 binFile.start= instSegs[1];
