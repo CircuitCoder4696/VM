@@ -6,7 +6,7 @@ public class FileFormat {
     import std.conv:to;
     import std.stdio:writeln;
     private BinFile parent;
-    private string objPath;
+    public string objPath;
     public string[] symbols= [];
     public uint[string] symbolLines;
     public string[string] aliases;
