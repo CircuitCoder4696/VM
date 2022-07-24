@@ -1,4 +1,5 @@
 module app.Assembler;
+import templates.DevToolChain;
 
 version(dbg_01){private enum dbg= 1;}else
 version(dbg_02){private enum dbg= 2;}else
@@ -7,7 +8,7 @@ version(dbg_04){private enum dbg= 4;}else
 version(dbg_05){private enum dbg= 5;}else
 { private enum dbg= 0; }
 
-public abstract class a0Assembler {
+public abstract class a0Assembler:DevToolChain {
     import d.util.BinFile;
     public bool assemblingAProcedure= false;
     public bool eoas= false;   //   Tells the assembler that there's no more code to assemble.  
@@ -19,7 +20,8 @@ public abstract class a0Assembler {
     public bool asmProcedure() {
         string inst;
         while(this.assemblingAProcedure){
-            inst= this.nextInstSegs()[0];
+            inst= this.nextInstSegs();
+            static if(dbg>0)log.dbg("inst= ",inst,";");
             switch(inst) {
                 case "param":
                     static if(dbg>2)writeln(this.currentInst);
@@ -46,7 +48,7 @@ public abstract class a0Assembler {
         public string currentInst() @property {
             return this.srcCode[this.line];
         };
-        public string currentInstSegs() @property {
+        public string[] currentInstSegs() @property {
             string result= this.srcCode[this.line];
             uint i,j= result.length;
             while(i<j && result[i]==' ')i++;
