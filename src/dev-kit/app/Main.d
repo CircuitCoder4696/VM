@@ -9,7 +9,7 @@ public class Main:DevToolChain {
         Assembler assembly;
         foreach(sourceFile; ah.getParam("compile")) {
             assembly= new Assembler(sourceFile);
-            log3.info(assembly.assemble().data);
+            log.info(3, assembly.assemble().data);
             version(dbg_00)writeln("defined symbols= ",assembly.symbols,";");
         };
         start0();
