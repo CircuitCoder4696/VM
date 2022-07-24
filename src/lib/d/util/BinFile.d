@@ -38,9 +38,9 @@ public class FileFormat {
         this.symbols ~= [symbol];
         return result;
     };
-    public size_t newSymbol(string symbol) {
+    public size_t newSymbol(string symbol, uint offset) {
         size_t result= this.symbols.length;
-        this.symbols ~= [symbol];
+        if(this.symbols.contains(symbol))this.symbols ~= [symbol];
         return result;
     };
     public size_t newParam(string param) {
