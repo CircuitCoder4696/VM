@@ -31,9 +31,9 @@ public abstract class a0Assembler:DevToolChain {
         return !this.eoas;
     };
     public bool asmProcedure() {
-        assert(limit-- > 0);
+        assert(limit > 0);
         string inst;
-        while(asmProcedureInstruction());
+        while(asmProcedureInstruction())limit--;
     };
     //getters:
         import std.stdio:writeln;
