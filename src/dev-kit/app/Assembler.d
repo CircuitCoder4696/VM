@@ -4,6 +4,8 @@ private enum devMode= true;
 
 public abstract class a0Assembler {
     import d.util.BinFile;
+    public bool assemblingAProcedure= false;
+    public uint line;   //   Allow for switching between the assembler's methods.  
     public string fp;
     public string[] srcCode;
     // public string[] symbols;   //   The symbols will have to be passed to the binary file, potentially.  
@@ -21,6 +23,10 @@ public abstract class a0Assembler {
             if(this.binFile.ff.symbols is null)writeln("[Err] ",__MODULE__," @",__LINE__,":   `this.binFile.ff.symbols` shouldn't be null.  ");
             writeln("symbols= ",this.binFile.ff.symbols,";");
             return this.binFile.ff.symbols.dup;
+        };
+    //incremented-getters:
+        public string nextInst() {
+            return this.srcCode[this.line++];
         };
 };
 
