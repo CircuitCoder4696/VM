@@ -14,7 +14,7 @@ public class DevToolChain_DbgMessage {
     public this(uint threshold) {
         this.threshold= threshold;
     };
-    public void opDispatch(string mode, T...)(T message, int line= __LINE__) {
+    public static void opDispatch(string mode, T...)(T message, int line= __LINE__) {
         if(dbg <= this.threshold)return;
         string[] st= stack_trace();
         // foreach(i, sts; st)writeln("[",i,"]: ",sts);
@@ -34,5 +34,35 @@ public abstract class DevToolChain {
     };
     public void stop0() {
         writeln("\\----- (0)");
+    };
+    public void start1() {
+        writeln("/----- (1)");
+    };
+    public void stop1() {
+        writeln("\\----- (1)");
+    };
+    public void start2() {
+        writeln("/----- (2)");
+    };
+    public void stop2() {
+        writeln("\\----- (2)");
+    };
+    public void start3() {
+        writeln("/----- (3)");
+    };
+    public void stop3() {
+        writeln("\\----- (3)");
+    };
+    public void start4() {
+        writeln("/----- (4)");
+    };
+    public void stop4() {
+        writeln("\\----- (4)");
+    };
+    public void start5() {
+        writeln("/----- (5)");
+    };
+    public void stop5() {
+        writeln("\\----- (5)");
     };
 };

@@ -12,9 +12,9 @@ public class Main:DevToolChain {
             log3.info(assembly.assemble().data);
             version(dbg_00)writeln("defined symbols= ",assembly.symbols,";");
         };
-    qStart0();
+    start0();
     log.info(ah.getParam("compile"));
-    qStop0();
+    stop0();
     log.info(ah.getParam("args"));
     log.info("Hello vmdk.  ");
 };
