@@ -1,9 +1,6 @@
 module d.proc.command;
 
-public bool contains(string[] self, string query) {
-    foreach(v; self)if(v==query)return true;
-    return false;
-};
+import d.proc.string;
 
 public class ArgHandler {
     private string[] ArgV;

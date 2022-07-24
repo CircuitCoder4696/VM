@@ -57,13 +57,14 @@ public class Assembler {
         return true;
     };
     public typeof(this) assemble() {
+        import d.proc.string;
         import std;
         ubyte[] result= [];
         string[] unimplementedInstructions;
         foreach(i, inst; this.srcCode) {
             if((cast(size_t) inst[].ptr)==0)return this;   //   Avoid segmentaton.  
             if(assembleInst(i, inst))continue;
-            if(unimplementedInstructions.indexOf(inst)==-1)unimplementedInstructions ~= [inst];
+            if(unimplementedInstructions.contains(inst))unimplementedInstructions ~= [inst];
         };
         if(unimplementedInstructions.length!=0)writeln("unimplementedInstructions= ",unimplementedInstructions,";");
         this.binFile= new BinFile(this.fp);
