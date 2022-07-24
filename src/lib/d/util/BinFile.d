@@ -133,8 +133,9 @@ public class BinFile:binary_file {
     };
     public typeof(this) setObjPath(string path) {
         this.ff.objPath= path;
+        return this;
     };
     public string objPath() @property {
         return this.ff.objPath;
-    }
+    };
 };
