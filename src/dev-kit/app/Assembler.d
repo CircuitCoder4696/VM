@@ -34,6 +34,7 @@ public abstract class a0Assembler:DevToolChain {
         assert(limit > 0);
         string inst;
         while(asmProcedureInstruction())limit--;
+        return true;
     };
     //getters:
         import std.stdio:writeln;
@@ -55,7 +56,7 @@ public abstract class a0Assembler:DevToolChain {
         };
         public string[] currentInstSegs() @property {
             string result= this.srcCode[this.line];
-            uint i,j= result.length;
+            uint i,j= cast(uint) result.length;
             while(i<j && result[i]==' ')i++;
             result= result[i..$];
             return result.split(" ");
@@ -70,7 +71,7 @@ public abstract class a0Assembler:DevToolChain {
             assert(!this.eoas,"The assembler can't assemble non-existent code.  ");
             if(this.line>=this.srcCode.length)this.eoas= true;
             string result= this.srcCode[++this.line];
-            uint i,j= result.length;
+            uint i,j= cast(uint) result.length;
             while(i<j && result[i]==' ')i++;
             result= result[i..$];
             if(this.line>=this.srcCode.length)this.eoas= true;
