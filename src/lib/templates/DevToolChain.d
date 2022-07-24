@@ -29,4 +29,10 @@ public abstract class DevToolChain {
     public DevToolChain_DbgMessage log3= new DevToolChain_DbgMessage(3);
     public DevToolChain_DbgMessage log4= new DevToolChain_DbgMessage(4);
     public DevToolChain_DbgMessage log5= new DevToolChain_DbgMessage(5);
+    public void start0() {
+        writeln("/----- (0)");
+    };
+    public void stop0() {
+        writeln("\\----- (0)");
+    };
 };
