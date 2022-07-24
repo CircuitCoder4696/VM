@@ -19,16 +19,7 @@ public abstract class a0Assembler:DevToolChain {
     public BinFile binFile;
     public bool asmProcedure() {
         string inst;
-        while(this.assemblingAProcedure){
-            inst= this.nextInstSegs();
-            static if(dbg>0)log.dbg("inst= ",inst,";");
-            switch(inst) {
-                case "param":
-                    static if(dbg>2)writeln(this.currentInst);
-                    this.binFile.newParam(this.currentInstSegs[1]);
-                default:
-            };
-        };
+        while(asmProcedureInstruction());
     };
     //getters:
         import std.stdio:writeln;
