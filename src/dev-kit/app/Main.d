@@ -8,12 +8,12 @@ public void main(string[] ArgV) {
     Assembler assembly;
     foreach(sourceFile; ah.getParam("compile")) {
         assembly= new Assembler(sourceFile);
-        version(dbg_03)writeln(assembly.assemble().data);
+        log3.info(assembly.assemble().data);
         version(dbg_00)writeln("defined symbols= ",assembly.symbols,";");
     };
     writeln("/----- (0)");
-    version(dbg_00)writeln(ah.getParam("compile"));
+    log.info(ah.getParam("compile"));
     writeln("\\----- (0)");
-    version(dbg_00)writeln(ah.getParam("args"));
-    version(dbg_00)writeln("Hello vmdk.  ");
+    log.info(ah.getParam("args"));
+    log.info("Hello vmdk.  ");
 };
