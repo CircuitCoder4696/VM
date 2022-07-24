@@ -27,7 +27,7 @@ public abstract class a0Assembler {
         };
     //incremented-getters:
         public string nextInst() {
-            is(this.eoas)assert(!thiseoas,"The assembler can't assemble non-existent code.  ");
+            assert(!this.eoas,"The assembler can't assemble non-existent code.  ");
             return this.srcCode[this.line++];
         };
 };
@@ -89,8 +89,8 @@ public class Assembler:a0Assembler {
         import std;
         ubyte[] result= [];
         string[] unimplementedInstructions;
-        foreach(i, inst; this.srcCode) {
-            if((cast(size_t) inst[].ptr)==0)return this;   //   Avoid segmentaton.  
+        while(!this.eoas) {
+            if((cast(size_t) inst[].ptr)==0)return this;   //   Avoid segmentaton faults.  
             if(assembleInst(i, inst))continue;
             if(unimplementedInstructions.contains(inst))unimplementedInstructions ~= [inst];
         };
