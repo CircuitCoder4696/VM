@@ -6,7 +6,7 @@ public class FileFormat {
     import std.stdio:writeln;
     private BinFile parent;
     public string[] symbols= [];
-    public string[][string] params= [];
+    public string[][string] params;
     private enum:uint {
         Executable,
         Loadable,
