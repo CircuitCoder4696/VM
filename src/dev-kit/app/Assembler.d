@@ -16,6 +16,14 @@ public abstract class a0Assembler {
     public string[] srcCode;
     // public string[] symbols;   //   The symbols will have to be passed to the binary file, potentially.  
     public BinFile binFile;
+    public bool asmProcedure() {
+        while(this.assemblingAProcedure)switch(thisnextInstSegs()[0]) {
+            case "param":
+                static if(dbg>2)writeln(this.currentInst);
+                this.newParam(this.currentInstSegs[1]);
+            default:null;
+        };
+    };
     //getters:
         import std.stdio:writeln;
         public void[] data() @property @trusted {
