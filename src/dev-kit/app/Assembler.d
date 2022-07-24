@@ -52,7 +52,6 @@ public class Assembler {
                 break;
             default:
                 static if(devMode)writeln("unknown_inst=`",inst,"`;");
-                unimplementedInstructions ~= [inst];
                 return false;
         };
         return true;
