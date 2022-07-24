@@ -17,6 +17,17 @@ public abstract class a0Assembler:DevToolChain {
     public string[] srcCode;
     // public string[] symbols;   //   The symbols will have to be passed to the binary file, potentially.  
     public BinFile binFile;
+    public bool asmProcedureInstruction() {
+        string[] inst= this.nextInstSegs();
+        switch(inst[0]) {
+            case "param":
+                log.param(inst[1]);
+                return !this.eoas;
+            default:
+                log.unknownInst(inst[0]);
+        };
+        return !this.eoas;
+    };
     public bool asmProcedure() {
         string inst;
         while(asmProcedureInstruction());
@@ -49,13 +60,17 @@ public abstract class a0Assembler:DevToolChain {
     //incremented-getters:
         public string nextInst() {
             assert(!this.eoas,"The assembler can't assemble non-existent code.  ");
+            if(this.line>=this.srcCode.length)this.eoas= true;
             return this.srcCode[++this.line];
         };
         public string nextInstSegs() {
+            assert(!this.eoas,"The assembler can't assemble non-existent code.  ");
+            if(this.line>=this.srcCode.length)this.eoas= true;
             string result= this.srcCode[++this.line];
             uint i,j= result.length;
             while(i<j && result[i]==' ')i++;
             result= result[i..$];
+            if(this.line>=this.srcCode.length)this.eoas= true;
             return result.split(" ");
         };
 };
