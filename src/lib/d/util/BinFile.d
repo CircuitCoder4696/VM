@@ -9,6 +9,8 @@ public class FileFormat {
     public uint[string] symbolLines;
     public string[string] aliases;
     public string[][string] params;
+    public ulong[string] symbolDefautValOffsets;
+    public ulong[string] symbolDefautValOffsets;
     private enum:uint {
         Executable,
         Loadable,
