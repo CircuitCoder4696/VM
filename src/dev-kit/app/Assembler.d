@@ -45,7 +45,7 @@ public class Assembler {
                 break;
             case "procedure":
                 writeln("[Symbol] procedure `",this.binFile.objPath,"->",instSegs[1],"`: ",line,";");
-                this.binFile.newSymbol(this.binFile.objPath,"->",instSegs[1], line);
+                this.binFile.newSymbol(this.binFile.objPath~"->"~instSegs[1], line);
                 if(instSegs.length > 2)this.enterProcedure(instSegs);
                 break;
             case "start":
