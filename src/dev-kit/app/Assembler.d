@@ -41,11 +41,25 @@ public abstract class a0Assembler {
     //properties:
         public string currentInst() {
             return this.srcCode[this.line];
-        }
+        };
+        public string currentInstSegs() {
+            string result= this.srcCode[this.line];
+            uint i,j= result.length;
+            while(i<j && result[i]==' ')i++;
+            result= result[i..$];
+            return result.split(" ");
+        };
     //incremented-getters:
         public string nextInst() {
             assert(!this.eoas,"The assembler can't assemble non-existent code.  ");
             return this.srcCode[++this.line];
+        };
+        public string currentInstSegs() {
+            string result= this.srcCode[this.line];
+            uint i,j= result.length;
+            while(i<j && result[i]==' ')i++;
+            result= result[i..$];
+            return result.split(" ");
         };
 };
 
