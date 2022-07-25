@@ -1,7 +1,7 @@
 module templates.DevToolChain;
 import d.io.FileIO;
 private enum dbg= 4;
-private static FileIO file= new FileIO("./log.html");
+private FileIO file= new FileIO("./log.html");
 
 public class DevToolChain_DbgMessage {
     import d.reflection;
