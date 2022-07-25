@@ -32,20 +32,20 @@ public class Logger {
             file.append("[%s] %s:   %s".format(mode, st[4], message).voidArr);
         };
     };
-    public void param(T...)(int lvl, T msg) {
-        this.____msg("param", lvl, msg);
+    public void param(T...)(T msg) {
+        this.____msg("param", msg);
     };
     public void dbg(T...)(T msg) {
-        this.____msg("debug", msg, lvl);
+        this.____msg("debug", msg);
     };
     public void info(T...)(T msg,) {
-        this.____msg("info", msg, lvl);
+        this.____msg("info", msg);
     };
     public void warn(T...)(T msg) {
-        this.____msg("warn", msg, lvl);
+        this.____msg("warn", msg);
     };
     public void error(T...)(T msg,) {
-        this.____msg("error", msg, lvl);
+        this.____msg("error", msg);
     };
 };
 
