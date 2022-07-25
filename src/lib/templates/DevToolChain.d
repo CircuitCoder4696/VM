@@ -46,6 +46,7 @@ public class Logger {
     };
     public void info(T...)(T message) {
         string[] d= [];
+        writeln("log.info");
         foreach(v; message)d ~= ["%s".format(v)];
         this.____msg("info", d);
     };
