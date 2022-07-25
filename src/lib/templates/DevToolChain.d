@@ -19,8 +19,8 @@ public class Logger {
         string[] st= stack_trace();
         // foreach(i, sts; st)writeln("[",i,"]: ",sts);
         if(threshold < dbg) {
-            writeln("[",mode,"] ",i.mod," @",i.line,":   ",message);
-            file.append("["~mode~"] "~i.mod~" @"~i.line~":   "~message);
+            writeln("[",mode,"] ",st[4]," :   ",message);
+            file.append("[",mode,"] ",st[4]," :   ",message);
         };
     };
     public void param(T...)(int lvl, T msg) {
