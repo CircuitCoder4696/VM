@@ -125,7 +125,7 @@ public class Assembler:a0Assembler {
                 this.binFile.newSymbol(instSegs[1]);
                 break;
             default:
-                static if(dbg > 1)writeln("unknown_inst=`",inst,"`;");
+                log.info(1, "unknown_inst=`",inst,"`;");
                 return false;
         };
         return true;
