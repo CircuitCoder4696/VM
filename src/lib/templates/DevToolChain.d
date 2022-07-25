@@ -12,7 +12,7 @@ public class DevToolChain_DbgMessage {
         // foreach(i, sts; st)writeln("[",i,"]: ",sts);
         if(threshold < dbg) {
             writeln("[",mode,"] ",st[4]," @",line,":   ",message);
-            DevToolChain_DbgMessage.append("[",mode,"] ",st[4]," @",line,":   ",message);
+            file.append("[",mode,"] ",st[4]," @",line,":   ",message);
         };
     };
 };
