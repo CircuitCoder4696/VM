@@ -24,4 +24,24 @@ public class FileIO {
         };
         log.err(0, "Not implemented for this platform, sorry.  ");
     };
+    private string fp;
+    public this(string filePath) {
+        if(!pathCheck(filePath)){
+            writeln("[Critical] ",__MODULE__," @",__LINE__,":   Non-local file-paths are restricted for file-io, permission has to be granted to it first!  ");
+            return;
+        };
+        this.fp= filePath;
+    };
+    public void append(void[] data) {
+        if(!_e(this.fp))return log.err(0, "Could not find file \"",this.fp,"\".  ");
+        _a(this.fp, data);
+    };
+    public void[] read() {
+        if(!_e(this.fp))return log.err(0, "Could not find file \"",this.fp,"\".  ");
+        return _a(this.fp);
+    };
+    public void write(void[] data) {
+        if(!_e(this.fp))return log.err(0, "Could not find file \"",this.fp,"\".  ");
+        _w(this.fp, data);
+    };
 };
