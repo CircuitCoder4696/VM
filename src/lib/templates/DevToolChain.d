@@ -9,7 +9,7 @@ private struct info {
     string mod;
 };
 
-public class DevToolChain_DbgMessage {
+public class Log {
     import d.reflection;
     import std.stdio:writeln;
     static this() {
@@ -36,7 +36,7 @@ public class DevToolChain_DbgMessage {
 
 public abstract class DevToolChain {
     import std.stdio:writeln;
-    public DevToolChain_DbgMessage log= new DevToolChain_DbgMessage();
+    public Logger log= new Logger();
     public static void start0() {
         writeln("/----- (0)");
     };
