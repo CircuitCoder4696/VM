@@ -15,7 +15,7 @@ public class DevToolChain_DbgMessage {
     static this() {
         file= new FileIO("./log.html");
     };
-    private void ____msg(T...)(T message, int threshold, string mode= "NULL") {
+    private void ____msg(T...)(int threshold, T message, string mode= "NULL") {
         string[] st= stack_trace();
         // foreach(i, sts; st)writeln("[",i,"]: ",sts);
         if(threshold < dbg) {
