@@ -26,6 +26,7 @@ public class Logger {
         if(this.th >= th)writeln("Logger",threshold," can log stuff.  ");
     };
     private void ____msg(string mode, string[] message) {
+        writeln("log.____msg");
         string[] st= stack_trace();
         // foreach(i, sts; st)writeln("[",i,"]: ",sts);
         string msg= "";
