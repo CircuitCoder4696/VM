@@ -5,7 +5,10 @@ private enum dbg= 4;
 public class DevToolChain_DbgMessage {
     import d.reflection;
     import std.stdio:writeln;
-    public static FileIO file= new FileIO("./log.html");
+    public static FileIO file;
+    static this() {
+        DevToolChain_DbgMessage.file= new FileIO("./log.html");
+    };
     public static void opDispatch(string mode, T...)(int threshold, T message, int line= __LINE__) {
         string[] st= stack_trace();
         // foreach(i, sts; st)writeln("[",i,"]: ",sts);
