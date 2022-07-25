@@ -29,8 +29,8 @@ public class Logger {
         string[] st= stack_trace();
         // foreach(i, sts; st)writeln("[",i,"]: ",sts);
         string msg= "";
+        writeln("log.____msg   th=",th);
         if(this.th >= th)return;
-        writeln("log.____msg");
         foreach(s; message)msg ~= s;
         writeln("[",mode,"] ",st[4]," :   ",msg);
         file.append("[%s] %s:   %s".format(mode, st[4], msg).voidArr);
