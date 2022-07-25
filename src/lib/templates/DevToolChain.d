@@ -25,7 +25,7 @@ public class Logger {
         this.th= threshold;
         if(this.th >= th)writeln("Logger",threshold," can log stuff.  ");
     };
-    private void ____msg(T)(string mode, T[] message) {
+    private void ____msg(T...)(string mode, T message) {
         string[] st= stack_trace();
         // foreach(i, sts; st)writeln("[",i,"]: ",sts);
         string msg= "";
@@ -34,7 +34,9 @@ public class Logger {
         writeln("[",mode,"] ",st[4]," :   ",msg);
         file.append("[%s] %s:   %s".format(mode, st[4], msg).voidArr);
     };
-    public void param(T...)(T msg) {
+    public void param(T...)(T message) {
+        string[] d= [];
+        foreach(v; message)d ~= "%s".format(v)
         this.____msg("param", msg);
     };
     public void dbg(T...)(T msg) {
