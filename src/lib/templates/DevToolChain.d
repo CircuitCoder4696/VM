@@ -25,19 +25,19 @@ public class Logger {
         this.th= threshold;
         if(this.th >= th)writeln("Logger",threshold," can log stuff.  ");
     };
-    private void ____msg(T...)(string mode, T message) {
+    private void ____msg(string mode, string[] message) {
         string[] st= stack_trace();
         // foreach(i, sts; st)writeln("[",i,"]: ",sts);
         string msg= "";
         if(this.th >= th)return;
-        foreach(s; message)msg ~= "%s".format(s);
+        foreach(s; message)msg ~= s;
         writeln("[",mode,"] ",st[4]," :   ",msg);
         file.append("[%s] %s:   %s".format(mode, st[4], msg).voidArr);
     };
     public void param(T...)(T message) {
         string[] d= [];
-        foreach(v; message)d ~= "%s".format(v);
-        this.____msg("param", msg);
+        foreach(v; message)d ~= ["%s".format(v)];
+        this.____msg("param", d);
     };
     public void dbg(T...)(T msg) {
         this.____msg("debug", msg);
