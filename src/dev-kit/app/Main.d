@@ -10,7 +10,7 @@ public class Main:DevToolChain {
         foreach(sourceFile; ah.getParam("compile")) {
             assembly= new Assembler(sourceFile);
             log.info(5, assembly.assemble().data);
-            version(dbg_00)writeln("defined symbols= ",assembly.symbols,";");
+            log.info(4, "defined symbols= ",assembly.symbols,";");
         };
         log.info(0, ah.getParam("compile"));
         log.info(0, ah.getParam("args"));
