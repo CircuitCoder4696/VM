@@ -1,13 +1,6 @@
 module app.Assembler;
 import templates.DevToolChain;
 
-version(dbg_01){private enum dbg= 1;}else
-version(dbg_02){private enum dbg= 2;}else
-version(dbg_03){private enum dbg= 3;}else
-version(dbg_04){private enum dbg= 4;}else
-version(dbg_05){private enum dbg= 5;}else
-{ private enum dbg= 0; }
-
 public abstract class a0Assembler:DevToolChain {
     import d.util.BinFile;
     import std.array;
@@ -28,7 +21,7 @@ public abstract class a0Assembler:DevToolChain {
                 log.param(5, inst[1]);
                 return !this.eoas;
             default:
-                log.unknownInst(5, inst[0]);
+                log.unknownInst(1, inst[0]);
         };
         return !this.eoas;
     };
