@@ -11,6 +11,7 @@ private struct info {
 
 public class Logger {
     import d.reflection;
+    import std.format;
     import std.stdio:writeln;
     static this() {
         file= new FileIO("./log.html");
