@@ -9,13 +9,13 @@ private struct info {
     string mod;
 };
 
-public class Log {
+public class Logger {
     import d.reflection;
     import std.stdio:writeln;
     static this() {
         file= new FileIO("./log.html");
     };
-    private void ____msg(T...)(int threshold, T message, string mode= "NULL") {
+    private void ____msg(T...)(string mode, int threshold, T message) {
         string[] st= stack_trace();
         // foreach(i, sts; st)writeln("[",i,"]: ",sts);
         if(threshold < dbg) {
@@ -24,13 +24,13 @@ public class Log {
         };
     };
     public void param(T...)(int lvl, T msg) {
-        this.____msg(msg, lvl, "PARAM");
+        this.____msg("", msg, lvl);
     };
     public void dbg(T...)(int lvl, T msg) {
-        this.____msg(msg, lvl, "DBG");
+        this.____msg("", msg, lvl);
     };
     public void info(T...)(int lvl, T msg,) {
-        this.____msg(msg, lvl, "INFO");
+        this.____msg("", msg, lvl);
     };
 };
 
