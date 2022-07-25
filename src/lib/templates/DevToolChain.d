@@ -26,11 +26,11 @@ public class Logger {
         if(this.th >= th)writeln("Logger",threshold," can log stuff.  ");
     };
     private void ____msg(string mode, string[] message) {
-        writeln("log.____msg");
         string[] st= stack_trace();
         // foreach(i, sts; st)writeln("[",i,"]: ",sts);
         string msg= "";
         if(this.th >= th)return;
+        writeln("log.____msg");
         foreach(s; message)msg ~= s;
         writeln("[",mode,"] ",st[4]," :   ",msg);
         file.append("[%s] %s:   %s".format(mode, st[4], msg).voidArr);
