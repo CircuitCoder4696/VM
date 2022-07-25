@@ -9,7 +9,7 @@ public class DevToolChain_DbgMessage {
     static this() {
         file= new FileIO("./log.html");
     };
-    public static void opDispatch(string mode, T...)(int threshold, T message, int line= __LINE__) {
+    public void error(T...)(int threshold, T message, int line= __LINE__, string mod= __MODULE__) {
         string[] st= stack_trace();
         // foreach(i, sts; st)writeln("[",i,"]: ",sts);
         if(threshold < dbg) {
