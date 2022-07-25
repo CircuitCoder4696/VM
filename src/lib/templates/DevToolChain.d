@@ -24,7 +24,7 @@ public class Logger {
     public this(uint threshold) {
         this.threshold= threshold;
     };
-    private void ____msg(T...)(string mode, int threshold, T message) {
+    private void ____msg(T...)(string mode, T message) {
         string[] st= stack_trace();
         // foreach(i, sts; st)writeln("[",i,"]: ",sts);
         if(this.threshold < threshold) {
