@@ -33,19 +33,19 @@ public class Logger {
         };
     };
     public void param(T...)(int lvl, T msg) {
-        this.____msg("", lvl, msg);
+        this.____msg("param", lvl, msg);
     };
     public void dbg(T...)(T msg) {
-        this.____msg("", msg, lvl);
+        this.____msg("debug", msg, lvl);
     };
     public void info(T...)(T msg,) {
-        this.____msg("", msg, lvl);
+        this.____msg("info", msg, lvl);
     };
-    public void dbg(T...)(T msg) {
-        this.____msg("", msg, lvl);
+    public void warn(T...)(T msg) {
+        this.____msg("warn", msg, lvl);
     };
-    public void info(T...)(T msg,) {
-        this.____msg("", msg, lvl);
+    public void error(T...)(T msg,) {
+        this.____msg("error", msg, lvl);
     };
 };
 
