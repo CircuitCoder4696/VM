@@ -3,13 +3,19 @@ import d.io.FileIO;
 private enum dbg= 4;
 private FileIO file;
 
+private struct info {
+    int threshold;
+    int line;
+    string mod;
+};
+
 public class DevToolChain_DbgMessage {
     import d.reflection;
     import std.stdio:writeln;
     static this() {
         file= new FileIO("./log.html");
     };
-    public void error(T...)(int threshold, T message, int line= __LINE__, string mod= __MODULE__) {
+    public void error(T...)(T message, int threshold, info i= info(__LINE__, __MODULE__)) {
         string[] st= stack_trace();
         // foreach(i, sts; st)writeln("[",i,"]: ",sts);
         if(threshold < dbg) {
