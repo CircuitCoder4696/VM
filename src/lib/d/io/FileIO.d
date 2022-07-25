@@ -2,6 +2,7 @@ module d.io.FileIO;
 import templates.DevToolChain;
 
 public class FileIO {
+    import std.stdio;
     private static uint limit= 400;
     import std.file:
         _a= append,
