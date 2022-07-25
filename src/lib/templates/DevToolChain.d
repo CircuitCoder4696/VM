@@ -51,12 +51,12 @@ public class Logger {
 
 public abstract class DevToolChain {
     import std.stdio:writeln;
-    public static Logger log= new Logger(0);
-    public static Logger log1= new Logger(1);
-    public static Logger log2= new Logger(2);
-    public static Logger log3= new Logger(3);
-    public static Logger log4= new Logger(4);
-    public static Logger log5= new Logger(5);
+    public static Logger log;
+    public static Logger log1;
+    public static Logger log2;
+    public static Logger log3;
+    public static Logger log4;
+    public static Logger log5;
     static this() {
         DevToolChain.log= new Logger(0);
         DevToolChain.log1= new Logger(1);
