@@ -128,7 +128,9 @@ public class BinFile:binary_file {
         this.ff.newSymbol(symbol, offset);
     };
     public void[] data() @property {
+        start2();
         void[] result= this.ff.genData();
+        stop2();
         return result;
     };
     public typeof(this) setObjPath(string path) {
