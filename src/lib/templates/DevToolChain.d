@@ -40,15 +40,23 @@ public class Logger {
         this.____msg("param", d);
     };
     public void dbg(T...)(T msg) {
+        string[] d= [];
+        foreach(v; message)d ~= ["%s".format(v)];
         this.____msg("debug", msg);
     };
-    public void info(T...)(T msg,) {
+    public void info(T...)(T msg) {
+        string[] d= [];
+        foreach(v; message)d ~= ["%s".format(v)];
         this.____msg("info", msg);
     };
     public void warn(T...)(T msg) {
+        string[] d= [];
+        foreach(v; message)d ~= ["%s".format(v)];
         this.____msg("warn", msg);
     };
-    public void error(T...)(T msg,) {
+    public void error(T...)(T msg) {
+        string[] d= [];
+        foreach(v; message)d ~= ["%s".format(v)];
         this.____msg("error", msg);
     };
 };
