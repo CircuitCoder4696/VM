@@ -8,11 +8,11 @@ public class Main:DevToolChain {
         import app.Assembler;
         Assembler assembly;
         foreach(sourceFile; ah.getParam("compile")) {
-            start0();
             assembly= new Assembler(sourceFile);
+            start0();
             log.info(5, assembly.assemble().data);
-            log.info(4, "defined symbols= ",assembly.symbols,";");
             stop0();
+            log.info(4, "defined symbols= ",assembly.symbols,";");
         };
         // log.info(0, ah.getParam("compile"));
         // log.info(0, ah.getParam("args"));

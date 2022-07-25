@@ -141,8 +141,10 @@ public class Assembler:a0Assembler {
         writeln("Hello world!  ");
         ubyte[] result= [];
         string[] unimplementedInstructions;
+        start1();
         while(!this.eoas) {
             if(assembleInst())continue;
+        stop1();
             if(!unimplementedInstructions.contains(this.currentInst))unimplementedInstructions ~= [this.currentInst];
         };
         if(unimplementedInstructions.length!=0)writeln("unimplementedInstructions= ",unimplementedInstructions,";");
