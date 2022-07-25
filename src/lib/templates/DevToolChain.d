@@ -15,13 +15,31 @@ public class DevToolChain_DbgMessage {
     static this() {
         file= new FileIO("./log.html");
     };
-    public void error(T...)(T message, int threshold, info i= info(__LINE__, __MODULE__)) {
+    private void ____msg(T...)(T message, int threshold, string mode= "NULL") {
         string[] st= stack_trace();
         // foreach(i, sts; st)writeln("[",i,"]: ",sts);
         if(threshold < dbg) {
-            writeln("[",mode,"] ",st[4]," @",line,":   ",message);
-            file.append("[",mode,"] ",st[4]," @",line,":   ",message);
+            writeln("[",mode,"] ",i.mod," @",i.line,":   ",message);
+            file.append("["~mode~"] "~i.mod~" @"~i.line~":   "~message);
         };
+    };
+    public void param(T...)(int lvl, T msg) {
+        this.____msg(msg, lvl, i, "PARAM");
+    };
+    public void dbg(T...)(int lvl, T msg, info i= info(__LINE__, __MODULE__)) {
+        this.____msg(msg, lvl, i, "DBG");
+    };
+    public void info(T...)(int lvl, T msg, info i= info(__LINE__, __MODULE__)) {
+        this.____msg(msg, lvl, i, "INFO");
+    };
+    public void warn(T...)(int lvl, T msg, info i= info(__LINE__, __MODULE__)) {
+        this.____msg(msg, lvl, i, "WARN");
+    };
+    public void err(T...)(int lvl, T msg, info i= info(__LINE__, __MODULE__)) {
+        this.____msg(msg, lvl, i, "ERR");
+    };
+    public void critical(T...)(int lvl, T msg, info i= info(__LINE__, __MODULE__)) {
+        this.____msg(msg, lvl, i, "CRITICAL");
     };
 };
 
