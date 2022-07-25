@@ -1,6 +1,6 @@
 module templates.DevToolChain;
 import d.io.FileIO;
-private enum dbg= 4;
+private enum threshold= 4;
 private FileIO file;
 
 private struct info {
@@ -22,9 +22,9 @@ public class Logger {
     private void ____msg(T...)(string mode, int threshold, T message) {
         string[] st= stack_trace();
         // foreach(i, sts; st)writeln("[",i,"]: ",sts);
-        if(threshold < dbg) {
+        if(this.threshold < threshold) {
             writeln("[",mode,"] ",st[4]," :   ",message);
-            file.append("[",mode,"] ",st[4]," :   ",message);
+            file.append("[%s] %s:   %s".format(mode, st[4], message));
         };
     };
     public void param(T...)(int lvl, T msg) {
@@ -40,7 +40,12 @@ public class Logger {
 
 public abstract class DevToolChain {
     import std.stdio:writeln;
-    public Logger log= new Logger();
+    public Logger log= new Logger(0);
+    public Logger log1= new Logger(1);
+    public Logger log2= new Logger(2);
+    public Logger log3= new Logger(3);
+    public Logger log4= new Logger(4);
+    public Logger log5= new Logger(5);
     public static void start0() {
         writeln("/----- (0)");
     };
