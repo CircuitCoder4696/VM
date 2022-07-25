@@ -28,7 +28,7 @@ public class Logger {
     private void ____msg(T...)(string mode, T message) {
         string[] st= stack_trace();
         // foreach(i, sts; st)writeln("[",i,"]: ",sts);
-        if(this.threshold >= threshold)return;
+        if(this.th >= th)return;
         writeln("[",mode,"] ",st[4]," :   ",message);
         file.append("[%s] %s:   %s".format(mode, st[4], message).voidArr);
     };
