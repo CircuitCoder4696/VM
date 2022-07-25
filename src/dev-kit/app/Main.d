@@ -14,9 +14,9 @@ public class Main:DevToolChain {
             log.info(4, "defined symbols= ",assembly.symbols,";");
             stop0();
         };
-        log.info(0, ah.getParam("compile"));
-        log.info(0, ah.getParam("args"));
-        log.info(0, "Hello vmdk.  ");
+        // log.info(0, ah.getParam("compile"));
+        // log.info(0, ah.getParam("args"));
+        // log.info(0, "Hello vmdk.  ");
     };
 };
 
