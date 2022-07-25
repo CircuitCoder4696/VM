@@ -1,7 +1,7 @@
 module d.io.FileIO;
 import templates.DevToolChain;
 
-public class FileIO {
+public class FileIO:DevToolChain {
     import std.stdio;
     private static uint limit= 400;
     import std.file:
@@ -36,11 +36,14 @@ public class FileIO {
         this.fp= filePath;
     };
     public void append(void[] data) {
-        if(!_e(this.fp))return log.err(0, "Could not find file \"",this.fp,"\".  ");
+        if(!_e(this.fp))return log.error("Could not find file \"",this.fp,"\".  ");
         _a(this.fp, data);
     };
     public void[] read() {
-        if(!_e(this.fp))return log.err(0, "Could not find file \"",this.fp,"\".  ");
+        if(!_e(this.fp)) {
+            log.error("Could not find file \"",this.fp,"\".  ");
+            return null;
+        };
         return _a(this.fp);
     };
     public void write(void[] data) {
