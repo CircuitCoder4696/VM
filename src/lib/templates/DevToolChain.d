@@ -9,6 +9,10 @@ private struct info {
     string mod;
 };
 
+private void[] voidArr(string self) @property {
+    return cast(void[]) self[];
+};
+
 public class Logger {
     import d.reflection;
     import std.format;
@@ -25,7 +29,7 @@ public class Logger {
         // foreach(i, sts; st)writeln("[",i,"]: ",sts);
         if(this.threshold < threshold) {
             writeln("[",mode,"] ",st[4]," :   ",message);
-            file.append("[%s] %s:   %s".format(mode, st[4], message));
+            file.append("[%s] %s:   %s".format(mode, st[4], message).voidArr);
         };
     };
     public void param(T...)(int lvl, T msg) {
