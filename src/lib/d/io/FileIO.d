@@ -1,4 +1,5 @@
 module d.io.FileIO;
+import templates.DevToolChain;
 
 public class FileIO {
     private static uint limit= 400;
