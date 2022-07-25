@@ -1,12 +1,14 @@
 module templates.DevToolChain;
 import d.io.FileIO;
 private enum dbg= 4;
-private FileIO file= new FileIO("./log.html");
+private FileIO file;
 
 public class DevToolChain_DbgMessage {
     import d.reflection;
     import std.stdio:writeln;
-    static this() { };
+    static this() {
+        file= new FileIO("./log.html");
+    };
     public static void opDispatch(string mode, T...)(int threshold, T message, int line= __LINE__) {
         string[] st= stack_trace();
         // foreach(i, sts; st)writeln("[",i,"]: ",sts);
