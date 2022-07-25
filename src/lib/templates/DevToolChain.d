@@ -24,22 +24,13 @@ public class DevToolChain_DbgMessage {
         };
     };
     public void param(T...)(int lvl, T msg) {
-        this.____msg(msg, lvl, i, "PARAM");
+        this.____msg(msg, lvl, "PARAM");
     };
-    public void dbg(T...)(int lvl, T msg, info i= info(__LINE__, __MODULE__)) {
-        this.____msg(msg, lvl, i, "DBG");
+    public void dbg(T...)(int lvl, T msg) {
+        this.____msg(msg, lvl, "DBG");
     };
-    public void info(T...)(int lvl, T msg, info i= info(__LINE__, __MODULE__)) {
-        this.____msg(msg, lvl, i, "INFO");
-    };
-    public void warn(T...)(int lvl, T msg, info i= info(__LINE__, __MODULE__)) {
-        this.____msg(msg, lvl, i, "WARN");
-    };
-    public void err(T...)(int lvl, T msg, info i= info(__LINE__, __MODULE__)) {
-        this.____msg(msg, lvl, i, "ERR");
-    };
-    public void critical(T...)(int lvl, T msg, info i= info(__LINE__, __MODULE__)) {
-        this.____msg(msg, lvl, i, "CRITICAL");
+    public void info(T...)(int lvl, T msg,) {
+        this.____msg(msg, lvl, "INFO");
     };
 };
 
