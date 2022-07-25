@@ -22,7 +22,8 @@ public class FileIO {
             };
             if(path[0 .. 5])return false;
         } else {
-            assert(0, "[Critical] ",__MODULE__," @",__LINE__,":   Not implemented for this platform, sorry.  ");
+            import std.format;
+            assert(0, "[Critical] ".format(__MODULE__," @",__LINE__,":   Not implemented for this platform, sorry.  "));
         };
     };
     private string fp;
