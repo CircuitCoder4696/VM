@@ -36,7 +36,7 @@ public class Logger {
     };
     public void param(T...)(T message) {
         string[] d= [];
-        foreach(v; message)d ~= "%s".format(v)
+        foreach(v; message)d ~= "%s".format(v);
         this.____msg("param", msg);
     };
     public void dbg(T...)(T msg) {
