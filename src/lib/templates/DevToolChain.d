@@ -42,22 +42,22 @@ public class Logger {
     public void dbg(T...)(T message) {
         string[] d= [];
         foreach(v; message)d ~= ["%s".format(v)];
-        this.____msg("debug", msg);
+        this.____msg("debug", d);
     };
     public void info(T...)(T message) {
         string[] d= [];
         foreach(v; message)d ~= ["%s".format(v)];
-        this.____msg("info", msg);
+        this.____msg("info", d);
     };
     public void warn(T...)(T message) {
         string[] d= [];
         foreach(v; message)d ~= ["%s".format(v)];
-        this.____msg("warn", msg);
+        this.____msg("warn", d);
     };
     public void error(T...)(T message) {
         string[] d= [];
         foreach(v; message)d ~= ["%s".format(v)];
-        this.____msg("error", msg);
+        this.____msg("error", d);
     };
 };
 
