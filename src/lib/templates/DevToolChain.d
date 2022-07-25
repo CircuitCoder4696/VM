@@ -23,7 +23,7 @@ public class Logger {
     public uint th;
     public this(uint threshold) {
         this.th= threshold;
-        if
+        if(this.th >= th)writeln("Logger",threshold," can log stuff.  ");
     };
     private void ____msg(T...)(string mode, T message) {
         string[] st= stack_trace();
