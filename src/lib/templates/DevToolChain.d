@@ -24,7 +24,7 @@ public class Logger {
         };
     };
     public void param(T...)(int lvl, T msg) {
-        this.____msg("", msg, lvl);
+        this.____msg("", lvl, msg);
     };
     public void dbg(T...)(int lvl, T msg) {
         this.____msg("", msg, lvl);
