@@ -1,4 +1,5 @@
 module d.util.BinFile;
+import templates.DevToolChain;
 
 public class FileFormat {
     import d.proc.string;
@@ -103,7 +104,7 @@ binary_file provides `d.util->BinFile:this(string)` with data getters and setter
 * `this.get64:ulong(ptr:size_t,index:uint)`
 
 ++/
-public abstract class binary_file {
+public abstract class binary_file:DevToolChain {
     public FileFormat ff;
     private string fs;
 };
