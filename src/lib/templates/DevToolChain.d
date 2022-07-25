@@ -15,6 +15,10 @@ public class Logger {
     static this() {
         file= new FileIO("./log.html");
     };
+    public uint threshold;
+    public this(uint threshold) {
+        this.threshold= threshold;
+    };
     private void ____msg(T...)(string mode, int threshold, T message) {
         string[] st= stack_trace();
         // foreach(i, sts; st)writeln("[",i,"]: ",sts);
