@@ -1,6 +1,6 @@
 module templates.DevToolChain;
 import d.io.FileIO;
-private enum threshold= 4;
+private enum th= 4;
 private FileIO file;
 
 private struct info {
@@ -20,17 +20,17 @@ public class Logger {
     static this() {
         file= new FileIO("./log.html");
     };
-    public uint threshold;
+    public uint th;
     public this(uint threshold) {
-        this.threshold= threshold;
+        this.th= threshold;
+        if
     };
     private void ____msg(T...)(string mode, T message) {
         string[] st= stack_trace();
         // foreach(i, sts; st)writeln("[",i,"]: ",sts);
-        if(this.threshold < threshold) {
-            writeln("[",mode,"] ",st[4]," :   ",message);
-            file.append("[%s] %s:   %s".format(mode, st[4], message).voidArr);
-        };
+        if(this.threshold >= threshold)return;
+        writeln("[",mode,"] ",st[4]," :   ",message);
+        file.append("[%s] %s:   %s".format(mode, st[4], message).voidArr);
     };
     public void param(T...)(T msg) {
         this.____msg("param", msg);
