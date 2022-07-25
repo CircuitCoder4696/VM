@@ -57,6 +57,14 @@ public abstract class DevToolChain {
     public static Logger log3= new Logger(3);
     public static Logger log4= new Logger(4);
     public static Logger log5= new Logger(5);
+    static this() {
+        DevToolChain.log= new Logger(0);
+        DevToolChain.log1= new Logger(1);
+        DevToolChain.log2= new Logger(2);
+        DevToolChain.log3= new Logger(3);
+        DevToolChain.log4= new Logger(4);
+        DevToolChain.log5= new Logger(5);
+    };
     public static void start0() {
         writeln("/----- (0)");
     };
