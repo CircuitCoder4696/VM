@@ -44,10 +44,13 @@ public class FileIO:DevToolChain {
             log.error("Could not find file \"",this.fp,"\".  ");
             return null;
         };
-        return _a(this.fp);
+        return _r(this.fp);
     };
     public void write(void[] data) {
-        if(!_e(this.fp))return log.err(0, "Could not find file \"",this.fp,"\".  ");
+        if(!_e(this.fp)) {
+            log.error(0, "Could not find file \"",this.fp,"\".  ");
+            return;
+        };
         _w(this.fp, data);
     };
 };
