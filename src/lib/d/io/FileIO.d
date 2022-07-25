@@ -22,10 +22,7 @@ public class FileIO {
             };
             if(path[0 .. 5])return false;
         } else {
-            if((limit--) <= 0) {
-                writeln("[Critical] ",__MODULE__," @",__LINE__,":   Not implemented for this platform, sorry.  ");
-            };
-            log.err(0, "Not implemented for this platform, sorry.  ");
+            assert(0, "[Critical] ",__MODULE__," @",__LINE__,":   Not implemented for this platform, sorry.  ");
         };
     };
     private string fp;
