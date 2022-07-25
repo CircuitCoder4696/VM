@@ -1,6 +1,7 @@
 module d.io.FileIO;
 
 public class FileIO {
+    private static uint limit= 400;
     import std.file:
         _a= append,
         _e= exists,
@@ -18,6 +19,9 @@ public class FileIO {
         };
         if(path[0 .. 5])return false;
     } else {
-        log.err(0, "Not implemented for this platform, sorry");
+        if((limit--)=<0) {
+            writeln("[Critical] ",__MODULE__," @",__LINE__,":   Not implemented for this platform, sorry.  ");
+        };
+        log.err(0, "Not implemented for this platform, sorry.  ");
     };
 };
