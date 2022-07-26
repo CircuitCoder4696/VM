@@ -110,7 +110,7 @@ public class Assembler:a0Assembler {
         if(this.binFile is null)
             this.binFile= new BinFile(this.fp);
         start2();
-        log1.dbg(instSegs[0]);
+        writeln(instSegs[0]);
         switch(instSegs[0]) {   //SearchIndex:   inst.elements;
             case "object":
                 this.binFile.setObjPath(instSegs[1]);
