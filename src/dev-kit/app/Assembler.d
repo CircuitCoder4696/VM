@@ -137,8 +137,12 @@ public class Assembler:a0Assembler {
         string[] unimplementedInstructions;
         while(!this.eoas) {
             if(assembleInst())continue;
-            if(!unimplementedInstructions.contains(this.currentInst))unimplementedInstructions ~= [this.currentInst];
+        start1();
+            if(!unimplementedInstructions.contains(this.currentInst)) {
+                unimplementedInstructions ~= [this.currentInst];
+            };
         };
+        stop1();
         this.binFile= new BinFile(this.fp);
         return this;
     };
