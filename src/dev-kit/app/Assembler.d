@@ -35,9 +35,7 @@ public abstract class a0Assembler:DevToolChain {
         import std.stdio:writeln;
         public void[] data() @property @trusted {
             assert(this.binFile !is null, "`this.binFile` can not be null.  ");
-            start1();
             void[] result= this.binFile.data;   //   Data is generated and can't be directly overridden.  
-            stop1();
             return result;   //   Data is is generated and can't be directly overridden.  
         };
         public string[] symbols() @property {
@@ -136,8 +134,8 @@ public class Assembler:a0Assembler {
         ubyte[] result= [];
         string[] unimplementedInstructions;
         while(!this.eoas) {
-            start1();
             if(assembleInst())continue;
+            start1();
             if(!unimplementedInstructions.contains(this.currentInst)) {
                 unimplementedInstructions ~= [this.currentInst];
             };
