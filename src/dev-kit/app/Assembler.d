@@ -136,14 +136,14 @@ public class Assembler:a0Assembler {
         ubyte[] result= [];
         string[] unimplementedInstructions;
         while(!this.eoas) {
+            start1();
             if(assembleInst())continue;
             if(!unimplementedInstructions.contains(this.currentInst)) {
                 unimplementedInstructions ~= [this.currentInst];
             };
+            stop1();
         };
-        start1();
         this.binFile= new BinFile(this.fp);
-        stop1();
         return this;
     };
 };
