@@ -17,21 +17,21 @@ public class Logger {
     import d.reflection;
     import std.format;
     import std.stdio:writeln;
-    public static uint limit= 4;
+    public static uint limit= 1;
     static this() {
         file= new FileIO("./log.html");
     };
     public uint th;
     public this(uint level) {
         this.th= level;
-        if(this.th >= threshold)writeln("Logger",level," can log stuff.  ");
+        if(this.th < threshold)writeln("Logger",level," can log stuff.  ");
     };
     private void ____msg(string mode, string[] message) {
         string[] st= stack_trace();
         // foreach(i, sts; st)writeln("[",i,"]: ",sts);
         string msg= "";
         writeln("log.____msg   th=",th);
-        if(this.th >= threshold)return;
+        if(this.th < threshold)return;
         foreach(s; message)msg ~= s;
         writeln("[",mode,"] ",st[4]," :   ",msg);
         if(!file.exists())file.write("Logger written by ng069976.  ".voidArr);
