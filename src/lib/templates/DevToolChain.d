@@ -17,6 +17,7 @@ public class Logger {
     import d.reflection;
     import std.format;
     import std.stdio:writeln;
+    public static uint limit= 4;
     static this() {
         file= new FileIO("./log.html");
     };
@@ -33,6 +34,7 @@ public class Logger {
         if(this.th >= threshold)return;
         foreach(s; message)msg ~= s;
         writeln("[",mode,"] ",st[4]," :   ",msg);
+        if(!file.exists())file.write("Logger written by ng069976.  ".voidArr);
         file.append("[%s] %s:   %s".format(mode, st[4], msg).voidArr);
     };
     public void param(T...)(T message) {

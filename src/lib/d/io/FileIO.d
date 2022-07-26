@@ -3,7 +3,7 @@ import templates.DevToolChain;
 
 public class FileIO:DevToolChain {
     import std.stdio;
-    private static uint limit= 400;
+    private static uint limit= 4;
     import std.file:
         _a= append,
         _e= exists,
@@ -36,6 +36,7 @@ public class FileIO:DevToolChain {
         this.fp= filePath;
     };
     public void append(void[] data) {
+        assert(limit--);
         if(!_e(this.fp))return log.error("Could not find file \"",this.fp,"\".  ");
         _a(this.fp, data);
     };
