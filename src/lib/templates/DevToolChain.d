@@ -30,7 +30,7 @@ public class Logger {
         // foreach(i, sts; st)writeln("[",i,"]: ",sts);
         string msg= "";
         writeln("log.____msg   th=",th);
-        if(this.th >= th)return;
+        if(this.th >= threshold)return;
         foreach(s; message)msg ~= s;
         writeln("[",mode,"] ",st[4]," :   ",msg);
         file.append("[%s] %s:   %s".format(mode, st[4], msg).voidArr);
