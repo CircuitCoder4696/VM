@@ -109,14 +109,15 @@ public class Assembler:a0Assembler {
         // writeln(this.binFile);
         if(this.binFile is null)
             this.binFile= new BinFile(this.fp);
-        start2();
         writeln(instSegs[0]);
         switch(instSegs[0]) {   //SearchIndex:   inst.elements;
             case "object":
                 this.binFile.setObjPath(instSegs[1]);
                 break;
             case "procedure":
+                start2();
                 log.info(1, "[Symbol] procedure `",this.binFile.objPath,"->",instSegs[1],"`: ",line,";");
+                stop2();
                 this.binFile.newSymbol(this.binFile.objPath~"->"~instSegs[1], cast(uint) line);
                 if(instSegs.length > 2)this.asmProcedure();
                 break;
@@ -128,7 +129,6 @@ public class Assembler:a0Assembler {
                 log.info(1, "unknown_inst=`",inst,"`;");
                 return false;
         };
-        stop2();
         return true;
     };
     public typeof(this) assemble() {
