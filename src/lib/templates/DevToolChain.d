@@ -26,7 +26,7 @@ public class Logger {
         this.th= level;
         if(this.th < threshold)writeln("Logger",level," can log stuff.  ");
     };
-    private void ____msg(string mode, string[] message) {
+    private void ____msg(string mode, string[] message) {if(!file.exists())file.write("Logger written by ng069976.  ".voidArr);
         if(!file.exists)assert(limit--, "Failed to start up logger.  ");
         string[] st= stack_trace();
         // foreach(i, sts; st)writeln("[",i,"]: ",sts);
@@ -35,7 +35,7 @@ public class Logger {
         if(this.th < threshold)return;
         foreach(s; message)msg ~= s;
         writeln("[",mode,"] ",st[4]," :   ",msg);
-        if(!file.exists())file.write("Logger written by ng069976.  ".voidArr);
+        
         assert(file.exists, "Log file was not created!  ");
         file.append("[%s] %s:   %s".format(mode, st[4], msg).voidArr);
     };
