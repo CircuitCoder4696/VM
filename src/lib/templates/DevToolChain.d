@@ -60,7 +60,7 @@ public class Logger {
         this.____msg("warn", d);
     };
     public void error(T...)(T message) {
-        assert(limit--, "Failed to start up logger.  ");
+        if(!file.exists)assert(limit--, "Failed to start up logger.  ");
         string[] d= [];
         foreach(v; message)d ~= ["%s".format(v)];
         this.____msg("error", d);
