@@ -27,6 +27,7 @@ public class Logger {
         if(this.th < threshold)writeln("Logger",level," can log stuff.  ");
     };
     private void ____msg(string mode, string[] message) {
+        if(!file.exists)assert(limit--, "Failed to start up logger.  ");
         string[] st= stack_trace();
         // foreach(i, sts; st)writeln("[",i,"]: ",sts);
         string msg= "";
@@ -60,7 +61,6 @@ public class Logger {
         this.____msg("warn", d);
     };
     public void error(T...)(T message) {
-        if(!file.exists)assert(limit--, "Failed to start up logger.  ");
         string[] d= [];
         foreach(v; message)d ~= ["%s".format(v)];
         this.____msg("error", d);
