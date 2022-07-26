@@ -109,6 +109,8 @@ public class Assembler:a0Assembler {
         // writeln(this.binFile);
         if(this.binFile is null)
             this.binFile= new BinFile(this.fp);
+        start2();
+        log1.dbg(instSegs[0]);
         switch(instSegs[0]) {   //SearchIndex:   inst.elements;
             case "object":
                 this.binFile.setObjPath(instSegs[1]);
@@ -126,6 +128,7 @@ public class Assembler:a0Assembler {
                 log.info(1, "unknown_inst=`",inst,"`;");
                 return false;
         };
+        stop2();
         return true;
     };
     public typeof(this) assemble() {
@@ -134,12 +137,12 @@ public class Assembler:a0Assembler {
         ubyte[] result= [];
         string[] unimplementedInstructions;
         while(!this.eoas) {
-            if(assembleInst())continue;
             start1();
+            if(assembleInst())continue;
+            stop1();
             if(!unimplementedInstructions.contains(this.currentInst)) {
                 unimplementedInstructions ~= [this.currentInst];
             };
-            stop1();
         };
         this.binFile= new BinFile(this.fp);
         return this;
