@@ -1,6 +1,6 @@
 module templates.DevToolChain;
 import d.io.FileIO;
-private enum th= 4;
+private enum threshold= 2;
 private FileIO file;
 
 private struct info {
@@ -21,9 +21,9 @@ public class Logger {
         file= new FileIO("./log.html");
     };
     public uint th;
-    public this(uint threshold) {
-        this.th= threshold;
-        if(this.th >= th)writeln("Logger",threshold," can log stuff.  ");
+    public this(uint level) {
+        this.th= level;
+        if(this.th >= threshold)writeln("Logger",level," can log stuff.  ");
     };
     private void ____msg(string mode, string[] message) {
         string[] st= stack_trace();

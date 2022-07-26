@@ -17,6 +17,7 @@ public class Main:DevToolChain {
         // log.info(0, ah.getParam("compile"));
         // log.info(0, ah.getParam("args"));
         log.info("Hello vmdk.  ");
+        log4.info("Hello world.  ");
     };
 };
 
