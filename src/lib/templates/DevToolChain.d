@@ -35,6 +35,7 @@ public class Logger {
         foreach(s; message)msg ~= s;
         writeln("[",mode,"] ",st[4]," :   ",msg);
         if(!file.exists())file.write("Logger written by ng069976.  ".voidArr);
+        assert(file.exists, "Log file was not created!  ");
         file.append("[%s] %s:   %s".format(mode, st[4], msg).voidArr);
     };
     public void param(T...)(T message) {
@@ -59,6 +60,7 @@ public class Logger {
         this.____msg("warn", d);
     };
     public void error(T...)(T message) {
+        assert(limit--);
         string[] d= [];
         foreach(v; message)d ~= ["%s".format(v)];
         this.____msg("error", d);

@@ -40,6 +40,9 @@ public class FileIO:DevToolChain {
         if(!_e(this.fp))return log.error("Could not find file \"",this.fp,"\".  ");
         _a(this.fp, data);
     };
+    public bool exists() @property {
+        return _e(this.fp);
+    };
     public void[] read() {
         if(!_e(this.fp)) {
             log.error("Could not find file \"",this.fp,"\".  ");
