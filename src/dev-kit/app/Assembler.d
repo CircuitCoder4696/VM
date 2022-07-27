@@ -117,7 +117,7 @@ public class Assembler:a0Assembler {
             case "procedure":
                 start2();
                 
-                log.info(1, "[Symbol] procedure `",this.binFile.objPath,"->",instSegs[1],"`: ",line,";");
+                log1.info("[Symbol] procedure `",this.binFile.objPath,"->",instSegs[1],"`: ",line,";");
                 stop2();
                 this.binFile.newSymbol(this.binFile.objPath~"->"~instSegs[1], cast(uint) line);
                 if(instSegs.length > 2)this.asmProcedure();

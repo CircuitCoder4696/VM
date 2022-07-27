@@ -13,7 +13,7 @@ private void[] voidArr(string self) @property {
     return cast(void[]) self[];
 };
 
-public class Logger {
+public class Logger:DevToolChain {
     import d.reflection;
     import std.format;
     import std.stdio:writeln;
@@ -27,7 +27,10 @@ public class Logger {
         if(this.th < threshold)writeln("Logger",level," can log stuff.  ");
     };
     private void ____msg(string mode, string[] message) {
+        assert(limit--);
+        start4();
         if(!file.exists())file.write("Logger written by ng069976.  ".voidArr);
+        stop4();
         if(!file.exists)assert(limit--, "Failed to start up logger.  ");
         string[] st= stack_trace();
         // foreach(i, sts; st)writeln("[",i,"]: ",sts);
@@ -53,7 +56,9 @@ public class Logger {
         string[] d= [];
         writeln("log.info");
         foreach(v; message)d ~= ["%s".format(v)];
+        start3();
         this.____msg("info", d);
+        stop3();
     };
     public void warn(T...)(T message) {
         string[] d= [];
