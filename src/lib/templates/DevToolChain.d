@@ -27,7 +27,7 @@ public class Logger:DevToolChain {
         if(this.th < threshold)writeln("Logger",level," can log stuff.  ");
     };
     private void ____msg(string mode, string[] message) {
-        assert(limit--);
+        assert(limit--, "Limit reached.  ");
         start4();
         if(!file.exists())file.write("Logger written by ng069976.  ".voidArr);
         stop4();
