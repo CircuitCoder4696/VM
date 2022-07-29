@@ -1,4 +1,4 @@
-run = "bash ./VMDK.sh"
+run = "bash ./VM.sh"
 
 [nix]
 channel = "stable-21_11"

@@ -23,7 +23,8 @@ public class VM {
     public bool running= true;
 	public Proc proc= Proc();
 	public static ulong limit= 400;
-	public static void function(Proc)[256] vm,vm_ff;
+	public static //void function(Proc)[256]
+        void function(Proc)[] vm,vm_ff;
     public static BitField!256 bf,bf_ff;
 	private static void f_00(Proc) {};
     private static void f_ff(Proc proc) {
@@ -36,6 +37,10 @@ public class VM {
         VM.____newThread(proc.mem);
     };
 	static this() {
+        foreach(i; 0 .. 256) {
+            this.vm ~= &f_00;
+            this.vm_ff ~= &f_ff_00;
+        };
 		this.vm[0x00]= &f_00;
         this.bf[0x00]= true;
 		this.vm[0xff]= &f_ff;

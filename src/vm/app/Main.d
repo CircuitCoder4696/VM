@@ -15,7 +15,7 @@ public class Main:AppInit {
         break;
     default:
         if(option=="") {
-            log.err("No option selected!  ");
+            log.error("No option selected!  ");
             exit(16);
         };
         params[option] ~= [arg];
