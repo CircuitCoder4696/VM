@@ -17,7 +17,7 @@ public class Logger:DevToolChain {
     import d.reflection;
     import std.format;
     import std.stdio:writeln;
-    public static uint limit= 1;
+    public static uint limit= 4;
     static this() {
         file= new FileIO("./log.html");
     };
