@@ -1,1 +1,1 @@
-dub build --config='vm' --force && ./vm -s ./test-testassembler/myApp.hlAsm a b c -run ./myApp -s d e f
+dub build --config='experimental' --force && ./vm -s ./test-testassembler/myApp.hlAsm a b c -run ./myApp -s d e f
