@@ -1,8 +1,13 @@
 module experimental.AppendableDelegateArray;
 
-public class AppendableDelegateArray(D) {
-    private D[] delegates;
-    public void append(D delegatePtr) {
+int example(int val) {
+    auto xyz= new int[2];
+    return val *(cast(int) xyz.length);
+};
+
+public class AppendableDelegateArray {
+    private typeof(&example)[] delegates;
+    public void append(typeof(&example) delegatePtr) {
         this.delegates ~= (&delegatePtr)[0..1];
     };
     public int proc(int data) {
@@ -14,12 +19,12 @@ public class AppendableDelegateArray(D) {
 };
 
 public class t_AppendableDelegateArray {
-    AppendableDelegateArray ada= new AppendableDelegateArray!(int delegate(int), int);
+    AppendableDelegateArray ada= new AppendableDelegateArray();
     public void appendDelegates() {
         int m(int val) {
             return val * 3;
         };
-        aha.append(&m);
+        ada.append(&m);
         int b(int val) {
             return val + 2;
         };
