@@ -5,6 +5,7 @@ copyright "Copyright © 2022, runner"
 license "LGPL"
 configuration "experimental" {
     targetName "code-test"
+    sourcePaths "src/lib"
     sourcePaths "src/experimental"
 }
 configuration "vm" {
