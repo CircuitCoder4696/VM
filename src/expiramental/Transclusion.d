@@ -11,8 +11,8 @@ public class Transclusion {
     };
 };
 
-public class t_Transcusion {
+public class t_Transclusion {
     public void test(string[] ArgV) {
-        auto v_00= Transcusion.transclude("print 2 + 8;", "print $(X) + $(Y);");
+        auto v_00= Transclusion.transclude("print 2 + 8;", "print $(X) + $(Y);");
     };
 };
