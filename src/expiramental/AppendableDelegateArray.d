@@ -1,11 +1,11 @@
 module experimental.AppendableDelegateArray;
 
-public class AppendableDelegateArray(D,T) {
+public class AppendableDelegateArray(D) {
     private D[] delegates;
     public void append(D delegatePtr) {
         this.delegates ~= (&delegatePtr)[0..1];
     };
-    public T proc(T data) {
+    public int proc(int data) {
         foreach(d; this.delegates) {
             data= d(data);
         };
