@@ -3,20 +3,18 @@ description "A minimal D application."
 authors "runner"
 copyright "Copyright © 2022, runner"
 license "LGPL"
-configuration "experimental" {
+sourcePaths "src/lib"
+sourcePaths "src/init"
+configuration "vm-exp" {
     targetName "code-test"
-    sourcePaths "src/lib"
     sourcePaths "src/experimental"
 }
 configuration "vm" {
-    sourcePaths "src/lib"
-    sourcePaths "src/init"
     sourcePaths "src/vm"
     sourcePaths "test/vm"
 }
 configuration "vmdk" {
     targetName "vmdk"
-    sourcePaths "src/lib"
     sourcePaths "src/dev-kit"
     sourcePaths "test/vmdk"
 }
