@@ -1,4 +1,4 @@
-module application.Main;
+module app.Main;
 import app.VM;
 import templates.AppInit;
 

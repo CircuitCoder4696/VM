@@ -1,8 +1,9 @@
 module app.Main;
 import d.proc.command:ArgHandler;
 import templates.DevToolChain;
+import templates.AppInit;
 
-public class Main:DevToolChain {
+public class Main:AppInit {
     public static void main(string[] ArgV) {
         ArgHandler ah= new ArgHandler(ArgV, "c:compile", "o:output", "args:args");
         import app.Assembler;
