@@ -1,2 +1,2 @@
 clear
-dub run --config='experimental' --force
+dub run --config='vmdk-exp' --force

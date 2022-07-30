@@ -5,9 +5,11 @@ copyright "Copyright © 2022, runner"
 license "LGPL"
 sourcePaths "src/lib"
 sourcePaths "src/init"
-configuration "vm-exp" {
+configuration "vmdk-exp" {
     targetName "code-test"
-    sourcePaths "src/experimental"
+    sourcePaths "src/vmdk-exp"
+    sourcePaths "src/dev-kit"
+    sourcePaths "test/vmdk"
 }
 configuration "vm" {
     sourcePaths "src/vm"

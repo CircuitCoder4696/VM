@@ -3,7 +3,7 @@ import templates.DevToolChain;
 
 void main(string[] ArgV) {
     Logger log;
-    import application.Main;
+    import app.Main;
     auto main= new Main();
     main.ArgV= ArgV;
     while(main.ArgI < main.ArgV.length) {
