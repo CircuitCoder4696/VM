@@ -5,11 +5,8 @@ public class Transclusion {
         public string remainder;
         public string[string] transcudedVals;
         public this(string main, string transcludeString) {
-            string[string] transcusionVars;
-            string[][2] transcusionStructure= genTranscusionStructure(transcludeString);
-            string[] transcusionData= getTranscludedData(main, transcusionStructure);
-            transclusionVars= combineTransclusionParts(transcusionVars, transcusionData);
-            return transclusionVars;
+            import std;
+            writeln("Hello world.  ");
         };
     };
 };
