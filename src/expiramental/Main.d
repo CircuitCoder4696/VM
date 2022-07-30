@@ -1,5 +1,5 @@
 module experimental.Main;
-import experimental.AppendableDelegateArray;
+import experimental.Transclusion;
 
 public void main(string[] ArgV) {
     (new t_Transclusion()).test(ArgV);
