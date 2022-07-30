@@ -1,8 +1,7 @@
 module experimental.AppendableDelegateArray;
 
-int example(int val) {
-    auto xyz= new int[2];
-    return val *(cast(int) xyz.length);
+int example(int val) pure nothrow @nogc @safe {
+    return val *2;
 };
 
 public class AppendableDelegateArray {
